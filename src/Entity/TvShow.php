@@ -2,10 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\TvShowRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\TvShowRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Type;
 
 /**
  * @ORM\Entity(repositoryClass=TvShowRepository::class)
@@ -22,6 +25,8 @@ class TvShow
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[NotBlank()]
+    #[Length(max: 255, maxMessage: "Cette valeur est trop longue {maximun {{ limit }} caractères}" )]
     private $title;
 
     /**
@@ -32,6 +37,7 @@ class TvShow
     /**
      * @ORM\Column(type="date", nullable=true)
      */
+    #[Type("\DateTime")]
     private $releaseDate;
 
     /**

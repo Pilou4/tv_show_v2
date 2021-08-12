@@ -72,6 +72,8 @@ class TvShowRepository extends ServiceEntityRepository
             $queryBuilder->setParameter('search', "%$search%");
         }
 
+        $queryBuilder->addOrderBy('tvShow.title');
+
         $query = $queryBuilder->getQuery();
 
         return $query->getResult();

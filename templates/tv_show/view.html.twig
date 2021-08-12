@@ -1,30 +1,49 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{ tvShow.title }}</h1>
+    <div class="d-flex flex-row justify-content-between">
+        <h2>{{ tvShow.title }}</h2>
+        <div>
+            <a href="{{ path('tv_show_update', {'id': tvShow.id}) }}" class="btn btn-primary">Modifier</a>
+        </div>
+    </div>
 
     <ul class="list-inline">
-        {% for category in tvShow.categories %}
-            <li class="list-inline-item">
-                <a href="{{ path('category_view', {'id': category.id}) }}">{{ category.label }}</a>
-            </li>
-        {% endfor %}
+    {% for category in tvShow.categories %}
+        <li class="list-inline-item">
+            <a href="{{ path('category_view', {'id': category.id}) }}">{{ category.label }}</a>
+        </li>
+    {% endfor %}
     </ul>
+    <p>{{ tvShow.synopsis }}</p>
+
+    <dl class="row">
+
+        {% if tvShow.directedBy is not empty %}
+            <dt class="col-sm-3">Show runner</dt>
+            <dd class="col-sm-9">{{ tvShow.directedBy.fullName }}</dd>
+        {% endif %}
+        {% if tvShow.releaseDate is not empty %}
+            <dt class="col-sm-3">Première diffusion</dt>
+            <dd class="col-sm-9">{{ tvShow.releaseDate | date("d/m/Y") }}</dd>
+        {% endif %}
+    </dl>
+
+    <h3>Personnages principaux</h3>
 
     <ul>
         {% for character in tvShow.characters %}
-            <li>
-                {{ character.name }}
-                {% if character.actors is not empty %}
-                (
-                    {% for actor in character.actors %}
-                        {% if not loop.first %}, {% endif %}
-                        {{ actor.firstName }} {{ actor.lastName }}
-                    {% endfor %}
-                )
-                {% endif %}
-            </li>
+        <li>
+            {{ character.name }}
+            {% if character.actors is not empty %}
+            (
+                {% for actor in character.actors %}
+                    {% if not loop.first %}, {% endif %}
+                    {{ actor.firstName }} {{ actor.lastName }}
+                {% endfor %}
+            )
+            {% endif %}
+        </li>
         {% endfor %}
     </ul>
-
 {% endblock %}
