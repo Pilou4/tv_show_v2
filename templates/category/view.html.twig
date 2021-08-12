@@ -1,11 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="list-group">
-    {% for tvShow in tvShows %}
+
+<h1>{{ category.label }}</h1>
+
+
+<div class="list-group">
+    {% for tvShow in category.tvShows %}
         <a href="{{ path('tv_show_view', {'id': tvShow.id}) }}" class="list-group-item list-group-item-action">
             {{ tvShow.title }}
         </a>
     {% endfor %}
 </div>
+
+
 {% endblock %}

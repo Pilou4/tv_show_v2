@@ -9,10 +9,29 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TvShowController extends AbstractController
 {
-    #[Route('/tvShows', name: 'tv_show_list')]
+    #[Route('/tv-shows', name: 'tv_show_list')]
     public function list(): Response
     {
-        return $this->render('tv_show/list.html.twig');
+        $repository = $this->getDoctrine()->getRepository(TvShow::class);
+        $tvShows = $repository->findAll();
+
+        return $this->render('tv_show/list.html.twig',
+            [
+                'tvShows' => $tvShows
+            ]
+        );
+    }
+
+    // Autres syntaxe pour requierements
+    // #[Route('/blog/{page<\d+>}', name: 'blog_list')]
+    #[Route('/tv-show/{id}', name: 'tv_show_view', requirements: ['id' => '\d+'])]
+    public function view(TvShow $tvShow): Response
+    {
+        return $this->render('tv_show/view.html.twig',
+            [
+                "tvShow" => $tvShow
+            ]
+        );
     }
 
     #[Route('/tv-show/add', name: 'tv_show_add')]
