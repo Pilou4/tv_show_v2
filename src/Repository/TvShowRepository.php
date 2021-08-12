@@ -54,4 +54,27 @@ class TvShowRepository extends ServiceEntityRepository
 
         return $query->getOneOrNullResult();
     }
+
+    public function findByTitle($search)
+    {
+        $queryBuilder = $this->createQueryBuilder('tvShow');
+        $queryBuilder->leftJoin('tvShow.characters', 'character');
+
+        if(!empty($search)) {
+            // WHERE tvShow LIKE :search
+            $queryBuilder->where(
+                $queryBuilder->expr()->orX(
+                    $queryBuilder->expr()->like('tvShow.title', ':search'),
+                    $queryBuilder->expr()->like('character.name', ':search')
+                )
+            );
+            // WHERE tvShow LIKE '%star%'
+            $queryBuilder->setParameter('search', "%$search%");
+        }
+
+        $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
+    }
+
 }

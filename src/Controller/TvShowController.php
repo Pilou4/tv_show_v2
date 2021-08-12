@@ -3,17 +3,23 @@
 namespace App\Controller;
 
 use App\Entity\TvShow;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class TvShowController extends AbstractController
 {
     #[Route('/tv-shows', name: 'tv_show_list')]
-    public function list(): Response
+    public function list(Request $request): Response
     {
+        $search = $request->query->get('search');
+
+        /** @var TvShowRepository $repository */
         $repository = $this->getDoctrine()->getRepository(TvShow::class);
-        $tvShows = $repository->findAll();
+        // $tvShows = $repository->findAll();
+        $tvShows = $repository->findByTitle($search);
+
 
         return $this->render('tv_show/list.html.twig',
             [
