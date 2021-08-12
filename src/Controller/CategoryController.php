@@ -9,6 +9,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CategoryController extends AbstractController
 {
+    #[Route("/categories", name: 'category_list', requirements: ['id' => '\d+'])]
+    public function list(): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Category::class);
+        $categories = $repository->findAll();
+
+        return $this->render('category/list.html.twig', ["categories" => $categories]);
+    }
+
     #[Route("/category/{id}", name: 'category_view', requirements: ['id' => '\d+'])]
     public function view(Category $category): Response
     {
