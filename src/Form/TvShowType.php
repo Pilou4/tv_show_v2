@@ -2,29 +2,24 @@
 
 namespace App\Form;
 
-use App\Entity\Category;
 use App\Entity\Person;
 use App\Entity\TvShow;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Category;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 class TvShowType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add(
-            "title",
-            TextType::class,
-            [
-                "label" => "Titre de la série"
-            ]
-        );
-        
         $builder->add(
             "synopsis",
             TextareaType::class,
@@ -68,6 +63,37 @@ class TvShowType extends AbstractType
                 },
                 "required" => false
             ]
+        );
+        // on demande au formulaire de rajouter une "réaction" un listener
+        // lorsque l'evenement "PRE_SET_DATA" aura lieu, on executera la fonction anonyme suivante
+        $builder->addEventListener(
+            FormEvents::PRE_SET_DATA, 
+            function (FormEvent $event) {
+
+                // l'evenement de type FormEvent contient la donnée manipulée par le formulaire
+                // la mathode getData() de l'evenement me permet de récupérer la donnée
+                // puisque je suis dans un formulaire qui gère des TvShow
+                // getData va me renvoyer le TvShow géré par ce formulaire.
+                // (le tvShow que l'on a injecté dans ce formulaire lors de sa création dans le controller avec le createForm(FormType::class, $data))
+                /** @var TvShow $tvShow */
+                $tvShow = $event->getData();
+
+                // l'evenement contient également le formulaire
+                $form = $event->getForm();
+
+                // je crée le chmaps title au moment où le formulaire recoit l'objet
+                // qu'il doit manipuler
+                // si c'est un tvShow existant (qui à un ID) alors le champs sera
+                // disabled
+                $form->add(
+                    "title",
+                    TextType::class,
+                    [
+                        "label" => "Titre de la série",
+                        "disabled" => !empty($tvShow->getId())
+                    ]
+                );
+            }
         );
     }
     public function configureOptions(OptionsResolver $resolver)

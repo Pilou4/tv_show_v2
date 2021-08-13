@@ -14,7 +14,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 #[Route('/user')]
 class UserController extends AbstractController
 {
-    #[Route('/change-account', name: 'user_account_create')]
+    #[Route('/create-account', name: 'user_account_create')]
     public function createAccount(Request $request, UserPasswordHasherInterface $passwordEncoder)
     {
         $user = new User();
@@ -36,6 +36,10 @@ class UserController extends AbstractController
             $manager->persist($user);
             $manager->flush();
 
+            
+            // on pourrai envoyer un evenement custom du genre "app.create_account"
+            // puis on pourra creer un service qui ecoute cet evenement et envoi 
+            // un email de validation du compte
             $this->addFlash("success", "Votre compte a bien été créé ! Merci de vous authentifier.");
             return $this->redirectToRoute('app_login');
         }
