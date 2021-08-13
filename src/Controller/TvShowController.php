@@ -91,8 +91,29 @@ class TvShowController extends AbstractController
         return $this->render(
             'tv_show/update.html.twig',
             [
-                "tvShowForm" => $form->createView()
+                "tvShowForm" => $form->createView(),
+                "tvShow" => $tvShow
             ]
         );
+    }
+
+    #[Route('/tv-show/{id}/delete', name: 'tv_show_delete', requirements: ['id' => '\d+'])]
+    public function delete(TvShow $tvShow)
+    {
+        // 1 - on recupère l'entité à supprimer (param converter / repository)
+        // Nous on l'a fait avec le param converter
+
+        // 2 - on recupère le manager
+        $manager = $this->getDoctrine()->getManager();
+
+        // 3 - on demande au manager de supprimer l'entité
+        $manager->remove($tvShow);
+        $manager->flush();
+
+        // 4 - on met un message pour dire que ca s'est bien passé
+        $this->addFlash("success", "La série a bien été supprimée");
+
+        // 5 - on redirige vers une page qui montre l'effet (la liste des series, on va pouvoir voir que la serie n'y est plus)
+        return $this->redirectToRoute('tv_show_list');
     }
 }
