@@ -2,13 +2,15 @@
 
 namespace App\Form;
 
-use App\Entity\Character;
 use App\Entity\Person;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Character;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class CharacterType extends AbstractType
 {
@@ -35,6 +37,21 @@ class CharacterType extends AbstractType
                 "expanded" => true,
                 "attr" => [
                     "class" => "compact-select-list"
+                ]
+            ]
+        );
+
+        $builder->add(
+            "picture",
+            FileType::class,
+            [
+                "label" => "Image",
+                "mapped" => false,
+                "required" => false,
+                "constraints" => [
+                    new Image([
+                        'maxSize' => '1024k'
+                    ])
                 ]
             ]
         );

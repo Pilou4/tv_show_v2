@@ -36,7 +36,7 @@ class Season
     private $tvShow;
 
     /**
-     * @ORM\OneToMany(targetEntity=Episode::class, mappedBy="season", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Episode::class, mappedBy="season", orphanRemoval=true, cascade={"persist"})
      */
     private $episodes;
 

@@ -39,6 +39,11 @@ class Character
      */
     private $actors;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $pictureFilename;
+
     public function __construct()
     {
         $this->actors = new ArrayCollection();
@@ -93,6 +98,18 @@ class Character
     public function removeActor(Person $actor): self
     {
         $this->actors->removeElement($actor);
+
+        return $this;
+    }
+
+    public function getPictureFilename(): ?string
+    {
+        return $this->pictureFilename;
+    }
+
+    public function setPictureFilename(?string $pictureFilename): self
+    {
+        $this->pictureFilename = $pictureFilename;
 
         return $this;
     }

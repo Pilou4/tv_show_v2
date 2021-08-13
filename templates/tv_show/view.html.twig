@@ -39,7 +39,7 @@
         <hr>
         {% endif %}
         <div class="media">
-            <img src="https://via.placeholder.com/150" class="mr-3" width="110">
+            <img src="{{ asset('uploads/pictures/' ~ character.pictureFilename) }}" class="mr-3" width="110">
             <div class="media-body">
                 <h5 class="mt-0">
                     {{ character.name }}
@@ -55,4 +55,24 @@
             </div>
         </div>
     {% endfor %}
+    <div class="d-flex flex-row justify-content-between my-4">
+        <h3>Saison</h3>
+        <div>
+            <a href="{{ path('season_add', {'id': tvShow.id}) }}" class="btn btn-primary">Ajouter</a>
+        </div>
+    </div>
+
+    <ul>
+        {% for season in tvShow.seasons %}
+        <li>
+            Saison n°{{ season.number }} ({{ season.year }})
+
+            <ul>
+            {% for episode in season.episodes %}
+                <li>{{ episode.number }} - {{ episode.title }}</li>
+            {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
