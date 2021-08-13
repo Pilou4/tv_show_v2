@@ -19,12 +19,26 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('tv_show_list') }}">Séries</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('category_list') }}">Catégories</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('tv_show_list') }}">Séries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('category_list') }}">Catégories</a>
+                    </li>
+                    <li class="nav-item">
+                        {% if app.user %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('user_password_change') }}">Changer le mot de passe</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Deconnexion</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                        </li>
+                        {% endif %}
+                    </li>    
                 </ul>
             </div>
         </nav>
