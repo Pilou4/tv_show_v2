@@ -65,6 +65,11 @@ class TvShow
      */
     private $slug;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $rating;
+
     public function __construct()
     {
         $this->seasons = new ArrayCollection();
@@ -217,6 +222,18 @@ class TvShow
     public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getRating(): ?float
+    {
+        return $this->rating;
+    }
+
+    public function setRating(?float $rating): self
+    {
+        $this->rating = $rating;
 
         return $this;
     }

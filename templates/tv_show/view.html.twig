@@ -9,11 +9,11 @@
     </div>
 
     <ul class="list-inline">
-    {% for category in tvShow.categories %}
-        <li class="list-inline-item">
-            <a href="{{ path('category_view', {'id': category.id}) }}">{{ category.label }}</a>
-        </li>
-    {% endfor %}
+        {% for category in tvShow.categories %}
+            <li class="list-inline-item">
+                <a href="{{ path('category_view', {'id': category.id}) }}">{{ category.label }}</a>
+            </li>
+        {% endfor %}
     </ul>
     <p>{{ tvShow.synopsis }}</p>
 
@@ -27,6 +27,7 @@
             <dd class="col-sm-9">{{ tvShow.releaseDate | date("d/m/Y") }}</dd>
         {% endif %}
     </dl>
+
     <div class="d-flex flex-row justify-content-between my-4">
         <h3>Personnages principaux</h3>
         <div>
@@ -39,7 +40,9 @@
         <hr>
         {% endif %}
         <div class="media">
-            <img src="{{ asset('uploads/pictures/' ~ character.pictureFilename) }}" class="mr-3" width="110">
+            {% if character.pictureFilename is not empty %}
+                <img src="{{ asset('uploads/' ~ character.pictureFilename) }}" class="mr-3" width="110">
+            {% endif %}
             <div class="media-body">
                 <h5 class="mt-0">
                     {{ character.name }}

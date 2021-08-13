@@ -2,15 +2,21 @@
 
 namespace App\Controller;
 
-use App\Entity\Character;
 use App\Entity\TvShow;
+use App\Entity\Character;
+use App\Service\Uploader;
 use App\Form\CharacterType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class CharacterController extends AbstractController
 {
+    public function __construct(private Uploader $uploader)
+    {
+    }
+
     #[Route('/character/add/{id}', name: 'character_add', requirements: ['id' => '\d+'])]
     public function add(TvShow $tvShow, Request $request)
     {
@@ -26,15 +32,7 @@ class CharacterController extends AbstractController
             $pictureFile = $characterForm->get('picture')->getData();
             // si un fichier a ,bien été uploadé (optionnel)
             if ($pictureFile) {
-                // je genere un nom de fichier aléatoire pour éviter que deux fichiers ai le meme nom et s'écrasent 
-                // $pictureFilename = 6515611321561.jpg
-                $pictureFilename = uniqid() . "." . $pictureFile->guessExtension();
-                // je deplace le fichier (qui à été mis dans un dossier temporaire par PHP)
-                // je le met dans mon dossier public avec le nom que je vient de generer
-                $pictureFile->move(
-                    $this->getParameter('picture_directory'),
-                    $pictureFilename
-                );
+                $pictureFilename = $this->uploader->upload($pictureFile);
                 // je met sur l'entité (pour enregistrer en BDD) le nom du fichier qui vient d'etre mis dans le dossier public
                 $character->setPictureFilename($pictureFilename);
             }
@@ -68,15 +66,7 @@ class CharacterController extends AbstractController
             $pictureFile = $characterForm->get('picture')->getData();
             // si un fichier a ,bien été uploadé (optionnel)
             if ($pictureFile) {
-                // je genere un nom de fichier aléatoire pour éviter que deux fichiers ai le meme nom et s'écrasent 
-                // $pictureFilename = 6515611321561.jpg
-                $pictureFilename = uniqid() . "." . $pictureFile->guessExtension();
-                // je deplace le fichier (qui à été mis dans un dossier temporaire par PHP)
-                // je le met dans mon dossier public avec le nom que je vient de generer
-                $pictureFile->move(
-                    $this->getParameter('picture_directory'),
-                    $pictureFilename
-                );
+                $pictureFilename = $this->uploader->upload($pictureFile);
                 // je met sur l'entité (pour enregistrer en BDD) le nom du fichier qui vient d'etre mis dans le dossier public
                 $character->setPictureFilename($pictureFilename);
             }
