@@ -35,4 +35,36 @@ class SeasonController extends AbstractController
             "seasonForm" => $seasonForm->createView()
         ]);
     }
+
+    #[Route('/season/update/{id}', name: 'season_update', requirements: ['id' => '\d+'])]
+    #[IsGranted("ROLE_ADMIN")]
+    public function update(Season $season, Request $request)
+    {
+
+        $seasonForm = $this->createForm(SeasonType::class, $season);
+        $seasonForm->handleRequest($request);
+        if($seasonForm->isSubmitted() && $seasonForm->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->flush();
+
+            $this->addFlash("success", "La saison a bien été ajoutée");
+            return $this->redirectToRoute("tv_show_view", ["id" => $season->getTvShow()->getId()]);
+        }
+
+        return $this->render('season/update.html.twig', [
+            "seasonForm" => $seasonForm->createView(),
+            "season" =>$season
+        ]);
+    }
+
+    #[Route('/season/{id}/delete', name: 'season_delete', requirements: ['id' => '\d+'])]
+    #[IsGranted("ROLE_ADMIN")]
+    public function delete(Season $season)
+    {
+        $manager = $this->getDoctrine()->getManager();
+        $manager->remove($season);
+        $manager->flush();
+        $this->addFlash("success", "La saison a bien été supprimé");
+        return $this->redirectToRoute("tv_show_view", ["id" => $season->getTvShow()->getId()]);
+    }
 }

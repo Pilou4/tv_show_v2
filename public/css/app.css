@@ -21,3 +21,18 @@ label {
 legend {
     font-weight: bold;
 }
+
+table {
+    border: 1px solid #333;
+    margin: 1em;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    border: 1px solid #333;
+    text-align: center;
+    padding: .5em; 
+}

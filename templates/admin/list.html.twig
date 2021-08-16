@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<table>
+    <thead>
+        <tr>
+            <th colspan="4">Séries</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Titre</td>
+            <td>Date de sortie</td>
+            <td>Nombre de saison</td>
+            <td>Infos</td>
+        </tr>
+        {% for tvShow in tvShows %}
+            <tr>
+                <td>{{ tvShow.title }}</td>
+                <td>{{ tvShow.releaseDate | date("d/m/Y") }}</td>
+                <td>{{ tvShow.seasons.count }}</td>
+                <td><a href="{{ path('tv_show_view', {'id': tvShow.id}) }}">Détails</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">Catégories</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Nom</td>
+            <td>Nombre de série associer</td>
+        </tr>
+        <tr>
+            <td>Thriller</td>
+            <td>8</td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="5">Acteurs</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Prénom</td>
+            <td>Nom</td>
+            <td>Genre</td>
+            <td>Date de naissance</td>
+            <td>Série</td>
+        </tr>
+        <tr>
+            <td>Paul</td>
+            <td>Hubert</td>
+            <td>Homme</td>
+            <td>12/08/1976</td>
+            <td>Stargate</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

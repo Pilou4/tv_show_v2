@@ -77,6 +77,9 @@
         {% for season in tvShow.seasons %}
         <li>
             Saison n°{{ season.number }} ({{ season.year }})
+             {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('season_update', {'id': season.id}) }}"><i class="material-icons">edit</i></a>
+            {% endif %}
 
             <ul>
             {% for episode in season.episodes %}
