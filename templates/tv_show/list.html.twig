@@ -3,7 +3,7 @@
 {% block body %}
     <div class="d-flex flex-row justify-content-between">
         <h2>Séries</h2>
-        {% if is_granted('ROLE_TVSHOW_ADMIN') %}
+        {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('tv_show_add') }}" class="btn btn-primary">Ajouter</a>
         {% endif %}
     </div>

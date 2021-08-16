@@ -6,6 +6,7 @@ use App\Entity\TvShow;
 use App\Entity\Character;
 use App\Service\Uploader;
 use App\Form\CharacterType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,6 +19,7 @@ class CharacterController extends AbstractController
     }
 
     #[Route('/character/add/{id}', name: 'character_add', requirements: ['id' => '\d+'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function add(TvShow $tvShow, Request $request)
     {
         $character = new Character();
@@ -54,6 +56,7 @@ class CharacterController extends AbstractController
     }
 
     #[Route('/character/{id}/update', name: 'character_update', requirements: ['id' => '\d+'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function update(Character $character, Request $request)
     {
         $characterForm = $this->createForm(CharacterType::class, $character);
@@ -87,6 +90,7 @@ class CharacterController extends AbstractController
     }
 
     #[Route('/character/{id}/delete', name: 'character_delete', requirements: ['id' => '\d+'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function delete(Character $character)
     {
         $manager = $this->getDoctrine()->getManager();

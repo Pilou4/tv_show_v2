@@ -2,10 +2,12 @@
 
 {% block body %}
     <div class="d-flex flex-row justify-content-between">
-        <h2>{{ tvShow.title }}</h2>
-        <div>
-            <a href="{{ path('tv_show_update', {'id': tvShow.id}) }}" class="btn btn-primary">Modifier</a>
-        </div>
+        <h2>{{ tvShow.title }}</h2>  
+        {% if is_granted('ROLE_ADMIN') %}      
+            <div>
+                <a href="{{ path('tv_show_update', {'id': tvShow.id}) }}" class="btn btn-primary">Modifier</a>
+            </div>  
+        {% endif %}      
     </div>
 
     <ul class="list-inline">
@@ -30,9 +32,11 @@
 
     <div class="d-flex flex-row justify-content-between my-4">
         <h3>Personnages principaux</h3>
-        <div>
-            <a href="{{ path('character_add', {'id': tvShow.id}) }}" class="btn btn-primary">Ajouter</a>
-        </div>
+        {% if is_granted('ROLE_ADMIN') %}
+            <div>
+                <a href="{{ path('character_add', {'id': tvShow.id}) }}" class="btn btn-primary">Ajouter</a>
+            </div>
+        {% endif %}
     </div>
 
     {% for character in tvShow.characters %}
@@ -46,7 +50,9 @@
             <div class="media-body">
                 <h5 class="mt-0">
                     {{ character.name }}
-                    <a href="{{ path('character_update', {'id': character.id}) }}"><i class="material-icons">edit</i></a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('character_update', {'id': character.id}) }}"><i class="material-icons">edit</i></a>
+                    {% endif %}
                 </h5>
                 {% if character.actors is not empty %}
                     <ul class="list-inline">
@@ -60,9 +66,11 @@
     {% endfor %}
     <div class="d-flex flex-row justify-content-between my-4">
         <h3>Saison</h3>
-        <div>
-            <a href="{{ path('season_add', {'id': tvShow.id}) }}" class="btn btn-primary">Ajouter</a>
-        </div>
+        {% if is_granted('ROLE_ADMIN') %}
+            <div>
+                <a href="{{ path('season_add', {'id': tvShow.id}) }}" class="btn btn-primary">Ajouter</a>
+            </div>
+        {% endif %}
     </div>
 
     <ul>

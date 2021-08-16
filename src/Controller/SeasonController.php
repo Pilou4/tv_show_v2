@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Season;
 use App\Entity\TvShow;
 use App\Form\SeasonType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SeasonController extends AbstractController
 {
     #[Route('/season/add/{id}', name: 'season_add', requirements: ['id' => '\d+'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function add(TvShow $tvShow, Request $request)
     {
         $season = new Season();

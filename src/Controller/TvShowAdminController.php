@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[Route('/admin/tv-show')]
-#[IsGranted('ROLE_TVSHOW_ADMIN')]
+#[IsGranted('ROLE_ADMIN')]
 class TvShowAdminController extends AbstractController
 {
 
