@@ -14,15 +14,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class TvShowAdminController extends AbstractController
 {
 
-    /**
-     * @Route("/add", name="tv_show_add")
-     */
     #[Route('/add', name: 'tv_show_add')]
     public function add(Request $request)
     {
-        // on prefere les annotations
-        // $this->denyAccessUnlessGranted('ROLE_TVSHOW_ADMIN');
-
         // je crée un objet
         $tvShow = new TvShow();
 
