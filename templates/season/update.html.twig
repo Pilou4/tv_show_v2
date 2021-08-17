@@ -3,17 +3,29 @@
 {% block body %}
 
 <div class="d-flex flex-row justify-content-between mb-5">
-    <h2>Modifier une série</h2>
+    <h2>Modifier un épisode</h2>
     <div>
-        <a href="{{ path('season_delete', {id: season.id}) }}" onClick="return confirm('Confirmez la suppression');" class="btn btn-danger">Supprimer</a>
+        <a href="{{ path('episode_delete', {id: episode.id}) }}" onClick="return confirm('Confirmez la suppression');" class="btn btn-danger">Supprimer</a>
     </div>
 </div>
 
-{{ form_start(seasonForm) }} 
+{{ form_start(episodeForm) }}
 
-    {{ form_widget(seasonForm) }}
-
+    {{ form_widget(episodeForm) }}
+    
     <input type="submit" value="Modifier" class="btn btn-primary">
-{{ form_end(seasonForm) }}
+{{ form_end(episodeForm) }}
+<script>
+    let episodeFormCount = 0;
+    let episodeFormPrototype = $('#season_episodes').data('prototype');
+    let addEpisodeButton = $("<button type=\"button\" class=\"btn btn-outline-primary\">Ajouter un épisode</button>")
+    function addNewEpisodeForm() {
+        let newEpisodeForm = $(episodeFormPrototype.replace(/__name__/g, episodeFormCount));
+        episodeFormCount++;
+        $('#season_episodes').append(newEpisodeForm);
+    }
+    addEpisodeButton.on('click', addNewEpisodeForm);
+    $('#season_episodes').after(addEpisodeButton);
+</script>
 
 {% endblock %}

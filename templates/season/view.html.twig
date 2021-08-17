@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="d-flex flex-row justify-content-between my-4">
+        <h3>Liste des épisodes de la saison numéro {{ season.number }}</h3>
+    </div>
+        <ul>
+            {% for episode in season.episodes %}
+                <li>
+                    épisode n°{{ episode.number }} - {{ episode.title }}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('episode_update', {'id': episode.id}) }}"><i class="material-icons">edit</i></a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+{% endblock %}

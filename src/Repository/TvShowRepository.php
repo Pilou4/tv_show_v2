@@ -46,9 +46,17 @@ class TvShowRepository extends ServiceEntityRepository
         $queryBuilder->leftJoin('character.actors', 'actor');
         $queryBuilder->addSelect('actor');
 
+        $queryBuilder->leftJoin('tvShow.seasons', 'season');
+        $queryBuilder->addSelect('season');
+
+        $queryBuilder->leftJoin('season.episodes', 'episode');
+        $queryBuilder->addSelect('episode');
+
         // j'ajoute meme des tri
         $queryBuilder->addOrderBy('character.name');
         $queryBuilder->addOrderBy('actor.firstName');
+        $queryBuilder->addOrderBy('season.number');
+        $queryBuilder->addOrderBy('episode.number');
 
         $query = $queryBuilder->getQuery();
 

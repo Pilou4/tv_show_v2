@@ -4,14 +4,37 @@ namespace App\Controller;
 
 use App\Entity\Season;
 use App\Entity\TvShow;
+use App\Entity\Episode;
 use App\Form\SeasonType;
+use App\Repository\SeasonRepository;
+use App\Repository\EpisodeRepository;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
 
 class SeasonController extends AbstractController
 {
+    #[Route('season/{id}', name: 'season_view', requirements: ['id' => '\d+'])]
+    public function view($id): Response
+    {
+         /** @var SeasonRepository $repository */
+         $repository = $this->getDoctrine()->getRepository(Season::class);
+         $season = $repository->findAllEpisodesOrderedByNumber($id);
+
+        /** @var EpisodeRepository $repository */
+        $repository = $this->getDoctrine()->getRepository(Episode::class);
+        $episodes = $repository->findAllOrderedByNumber($id);
+ 
+        return $this->render('season/view.html.twig',
+            [
+                "season" => $season,
+                "episodes" => $episodes
+            ]
+        );
+    }
+
     #[Route('/season/add/{id}', name: 'season_add', requirements: ['id' => '\d+'])]
     #[IsGranted("ROLE_ADMIN")]
     public function add(TvShow $tvShow, Request $request)

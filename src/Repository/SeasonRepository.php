@@ -18,33 +18,23 @@ class SeasonRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Season::class);
     }
-
-    // /**
-    //  * @return Season[] Returns an array of Season objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function findAllEpisodesOrderedByNumber($id)
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $queryBuilder = $this->createQueryBuilder('season');
 
-    /*
-    public function findOneBySomeField($value): ?Season
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $queryBuilder->where(
+            $queryBuilder->expr()->eq('season.id', $id)
+        );
+
+        $queryBuilder->leftjoin('season.episodes', 'episode');
+        $queryBuilder->addSelect('episode');
+
+        $queryBuilder->orderBy('episode.number', 'asc');
+
+        $query = $queryBuilder->getQuery();
+
+        return $query->getOneOrNullResult();
+        // return $query->getResult();
     }
-    */
 }

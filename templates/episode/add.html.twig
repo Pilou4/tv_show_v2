@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h2 class="mb-5">Ajouter un épisode</h2>
+
+
+{{ form_start(episodeForm) }} 
+
+    {{ form_widget(episodeForm) }}
+
+    <input type="submit" value="Ajouter" class="btn btn-primary">
+{{ form_end(episodeForm) }}
+
+{% endblock %}
