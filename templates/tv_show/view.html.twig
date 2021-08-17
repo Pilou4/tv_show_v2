@@ -1,89 +1,79 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="d-flex flex-row justify-content-between">
-        <h2>{{ tvShow.title }}</h2>  
-        {% if is_granted('ROLE_ADMIN') %}      
-            <div>
+    <main class="tv_show_view">
+        <h2 class="tv_show_view-title">{{ tvShow.title }}</h2> 
+            {% if is_granted('ROLE_ADMIN') %}      
                 <a href="{{ path('tv_show_update', {'id': tvShow.id}) }}" class="btn btn-primary">Modifier</a>
-            </div>  
-        {% endif %}      
-    </div>
-
-    <ul class="list-inline">
-        {% for category in tvShow.categories %}
-            <li class="list-inline-item">
-                <a href="{{ path('category_view', {'id': category.id}) }}">{{ category.label }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-    <p>{{ tvShow.synopsis }}</p>
-
-    <dl class="row">
-        {% if tvShow.directedBy is not empty %}
-            <dt class="col-sm-3">Show runner</dt>
-            <dd class="col-sm-9">{{ tvShow.directedBy.fullName }}</dd>
-        {% endif %}
-        {% if tvShow.releaseDate is not empty %}
-            <dt class="col-sm-3">Première diffusion</dt>
-            <dd class="col-sm-9">{{ tvShow.releaseDate | date("d/m/Y") }}</dd>
-        {% endif %}
-    </dl>
-
-    <div class="d-flex flex-row justify-content-between my-4">
-        <h3>Personnages principaux</h3>
-        {% if is_granted('ROLE_ADMIN') %}
-            <div>
-                <a href="{{ path('character_add', {'id': tvShow.id}) }}" class="btn btn-primary">Ajouter</a>
+            {% endif %}      
+            <div class="tv_show_view-categories">
+                {% for category in tvShow.categories %}
+                    <a href="{{ path('category_view', {'id': category.id}) }}">{{ category.label }}</a>
+                {% endfor %}
             </div>
-        {% endif %}
-    </div>
-
-    {% for character in tvShow.characters %}
-        {% if not loop.first %}
-        <hr>
-        {% endif %}
-        <div class="media">
-            {% if character.pictureFilename is not empty %}
-                <img src="{{ asset('uploads/' ~ character.pictureFilename) }}" class="mr-3" width="110">
-            {% endif %}
-            <div class="media-body">
-                <h5 class="mt-0">
-                    {{ character.name }}
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('character_update', {'id': character.id}) }}"><i class="material-icons">edit</i></a>
-                    {% endif %}
-                </h5>
-                {% if character.actors is not empty %}
-                    <ul class="list-inline">
-                    {% for actor in character.actors %}
-                        <li class="list-inline-item">{{ actor.firstName }} {{ actor.lastName }}</li>
-                    {% endfor %}
-                    </ul>
+        
+        <section class="tv_show_view-synopsis">
+            <ul>
+                {% if tvShow.directedBy is not empty %}
+                    <li><span>Show runner :</span> {{ tvShow.directedBy.fullName }}</li>
                 {% endif %}
-            </div>
-        </div>
-    {% endfor %}
-    <div class="d-flex flex-row justify-content-between my-4">
-        <h3>Saison</h3>
-        {% if is_granted('ROLE_ADMIN') %}
-            <div>
-                <a href="{{ path('season_add', {'id': tvShow.id}) }}" class="btn btn-primary">Ajouter</a>
-            </div>
-        {% endif %}
-    </div>
+                {% if tvShow.releaseDate is not empty %}
+                    <li><span>Première diffusion :</span> {{ tvShow.releaseDate | date("d/m/Y") }}</li>
+                {% endif %}
+            </ul>    
+            <p class="tv_show_view-text"><span>Synopsis :</span> {{ tvShow.synopsis }}</p>    
+        </section>
+        <hr>
 
-    <ul>
-        {% for season in tvShow.seasons %}
-        <li>
-            <a href="{{ path('season_view', {'id': season.id}) }}">
-                Saison n°{{ season.number }} ({{ season.year }})
-            </a>
-             {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('season_update', {'id': season.id}) }}"><i class="material-icons">edit</i></a>
+        <h3 class="tv_show_view-subtitle">Personnages principaux</h3>
+        <section class="tv_show_view-persons">
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('character_add', {'id': tvShow.id}) }}" class="btn btn-primary">Ajouter</a>
             {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
+
+            {% for character in tvShow.characters %}
+                {# {% if not loop.first %}
+                <hr>
+                {% endif %} #}
+                <div class="tv_show_view-persons-cards">
+                    {% if character.pictureFilename is not empty %}
+                        <img src="{{ asset('uploads/' ~ character.pictureFilename) }}" class="mr-3" width="110">
+                    {% endif %}
+                    <div class="tv_show_view-name">
+                        <h5>{{ character.name }}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('character_update', {'id': character.id}) }}"><i class="material-icons">edit</i></a>
+                            {% endif %}
+                        </h5>
+                        {% if character.actors is not empty %}
+                             {% for actor in character.actors %}
+                                <p>{{ actor.fullName }}</p>
+                            {% endfor %}
+                        {% endif %} 
+                    </div>                   
+                </div>
+            {% endfor %}
+        </section>
+
+        <h3 class="tv_show_view-subtitle">Saison</h3>
+        <div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('season_add', {'id': tvShow.id}) }}" class="btn btn-primary">Ajouter</a>
+            {% endif %}
+        </div>
+
+        <ul>
+            {% for season in tvShow.seasons %}
+            <li>
+                <a href="{{ path('season_view', {'id': season.id}) }}">
+                    Saison n°{{ season.number }} ({{ season.year }})
+                </a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('season_update', {'id': season.id}) }}"><i class="material-icons">edit</i></a>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </main>
 
 {% endblock %}

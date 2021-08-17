@@ -1,24 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="d-flex flex-row justify-content-between">
-        <h2>Séries</h2>
-        {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('tv_show_add') }}" class="btn btn-primary">Ajouter</a>
-        {% endif %}
-    </div>
+<h1 class="tv_show-title">Séries télés</h1>        
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('tv_show_add') }}" class="btn btn-primary">Ajouter une série</a>
+    {% endif %}
 
-    <form class="form-inline my-5">
-        <div class="form-group mr-2">
-            <input type="text" value="{{ app.request.get('search') }}" class="form-control" name="search" placeholder="Rechercher par titre">
-        </div>
-        <button type="submit" class="btn btn-primary">Rechercher</button>
+    <form class="form-search">
+        <input
+            class="form-search-input"
+            type="text"
+            value="{{ app.request.get('search') }}" 
+            name="search"
+            placeholder="Rechercher par titre"
+        >
+        <button type="submit" class="form-search-button">Rechercher</button>
     </form>
-    <div class="list-group">
-    {% for tvShow in tvShows %}
-        <a href="{{ path('tv_show_view', {'id': tvShow.id}) }}" class="list-group-item list-group-item-action">
-            {{ tvShow.title }}
-        </a>
-    {% endfor %}
-</div>
+
+    <main class="tv_show-list">
+        {% for tvShow in tvShows %}
+            <a href="{{ path('tv_show_view', {'id': tvShow.id}) }}">
+                {{ tvShow.title }}
+                <p>{{ tvShow.seasons.count }} saisons</p>
+            </a>
+        {% endfor %}
+    </main>
 {% endblock %}

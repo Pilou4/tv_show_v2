@@ -1,0 +1,200 @@
+body {
+    margin: 0;
+}
+
+/* page tv_show_list */
+.tv_show-title {
+    text-align: center;
+    font-weight: 500;
+    font-size: 4em;
+    font-family : 'Comfortaa', cursif ;
+}
+
+.tv_show-list {
+    padding: 3em;
+    display: flex;
+    justify-content: space-between;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+}
+
+.tv_show-list > a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: black;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 1.2em;
+    margin: 1em;
+    min-width: 350px;
+    min-height: 350px;
+    border-radius: 10px;
+}
+
+.tv_show-list > a:hover {
+    background-color: rgba(128, 128, 128,50%);
+    color: white;
+    text-decoration: none;
+}
+
+/* page tv_show_view */
+.tv_show_view {
+
+}
+
+.tv_show_view-title {
+    text-align: center;
+}
+
+.tv_show_view-categories {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 1em;
+}
+
+.tv_show_view-categories > a {
+    color: black;
+    padding: .5em;
+    margin: .5em;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgba(127, 255, 212, 60%);
+}
+
+.tv_show_view-categories > a:hover {
+    text-decoration: none;
+    color: white;
+    background-color: blue;
+}
+
+.tv_show_view-categories {
+    display: flex;
+}
+
+.tv_show_view-synopsis {
+    display: flex;
+    padding: .5em;
+    margin: 1em;
+}
+
+.tv_show_view-synopsis > ul {
+    padding: .5em;
+    min-width: 30%;
+    list-style-type: none;
+    margin-top: 20px;
+} 
+
+.tv_show_view-text {
+    border: 1px solid black;
+    padding: 1em;
+    margin: 1em;
+}
+
+.tv_show_view-subtitle {
+    text-align: center;
+    padding: 1em;
+}
+
+.tv_show_view-persons {
+    display: flex;
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
+    padding: 2em;
+}
+
+.tv_show_view-persons-cards {
+    min-width: 300px;
+    display: flex;
+    border: 1px solid blue;
+    margin: .5em;
+    padding: .5em;
+}
+
+.tv_show_view-persons-cards > img {
+    /* padding: 1em; */
+    width: 150px;
+    margin: 0;
+}
+
+.tv_show_view-persons > h5 {
+    font-size: 1.2em;
+    padding: .5em;
+    margin: 0;
+}
+
+.tv_show_view > p {
+    margin: 0;
+}
+
+
+
+/* Formulaire boutton de recherche (page tv_show_list) */
+.form-search {
+    /* display: inline; */
+    background-color: rgb(0, 0, 255, 50%);
+    padding: 2em;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form-search-input {
+    text-align: center;
+    border: none;
+    border-radius: 20px;
+    padding: .5em;
+    margin-right: 20px;
+}
+
+.form-search-button {
+    border: none;
+    border-radius: 20px;
+    padding: .5em;
+    background-color: white;
+}
+
+.form-search-button:hover {
+    border: none;
+    color: white;
+    background-color: rgb(0,0,255);
+}
+
+.compact-select-list {
+    height: 115px;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    overflow: auto;
+    padding: 5px 10px;
+}
+
+.sub-form {
+    background-color: whitesmoke;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    padding: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+legend {
+    font-weight: bold;
+}
+
+/* tableau page admin */
+table {
+    border: 1px solid #333;
+    margin: 1em;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    border: 1px solid #333;
+    text-align: center;
+    padding: .5em; 
+}
