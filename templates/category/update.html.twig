@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="d-flex flex-row justify-content-between mb-5">
+    <h2>Modifier une catégorie</h2>
+    <div>
+        <a href="{{ path('category_delete', {id: category.id}) }}" onClick="return confirm('Confirmez la suppression');" class="btn btn-danger">Supprimer</a>
+    </div>
+</div>
+
+{{ form_start(categoryForm) }} 
+
+    {{ form_widget(categoryForm) }}
+
+    <input type="submit" value="Modifier" class="btn btn-primary">
+{{ form_end(categoryForm) }}
+
+{% endblock %}

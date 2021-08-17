@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+ <a href="{{ path('tv_show_add') }}">ajouter une série</a>
 <table>
     <thead>
         <tr>
@@ -25,28 +26,40 @@
     </tbody>
 </table>
 
+<a href="{{ path('category_add') }}">ajouter une catégorie</a>
+
 <table>
     <thead>
         <tr>
-            <th colspan="2">Catégories</th>
+            <th colspan="4">Catégories</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>Nom</td>
             <td>Nombre de série associer</td>
+            <td>Détails</td>
+            <td>supprésion</td>
         </tr>
-        <tr>
-            <td>Thriller</td>
-            <td>8</td>
-        </tr>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.label }}</td>
+                <td>{{ category.tvShows.count }}</td>
+                <td><a href="{{ path('category_view', {'id': category.id}) }}">Détails</a></td>
+                <td>
+                    <a href="{{ path('category_delete', {'id': category.id}) }}" onClick="return confirm('Confirmez la suppression');" class="btn btn-danger">Supprimer</a>
+                </td>
+            </tr>            
+        {% endfor %}
     </tbody>
 </table>
+
+<a href="{{ path('person_add') }}">ajouter une acteur</a>
 
 <table>
     <thead>
         <tr>
-            <th colspan="5">Acteurs</th>
+            <th colspan="6">Acteurs</th>
         </tr>
     </thead>
     <tbody>
@@ -55,15 +68,22 @@
             <td>Nom</td>
             <td>Genre</td>
             <td>Date de naissance</td>
-            <td>Série</td>
+            <td>Détails</td>
+            <td>suppresion</td>
         </tr>
-        <tr>
-            <td>Paul</td>
-            <td>Hubert</td>
-            <td>Homme</td>
-            <td>12/08/1976</td>
-            <td>Stargate</td>
-        </tr>
+        {% for person in persons %}
+            <tr>
+                <td>{{ person.firstName }}</td>
+                <td>{{ person.lastName }}</td>
+                <td>{{ person.gender }}</td>
+                <td>{{ person.birthDate | date("d/m/Y") }}</td>
+                {# <td>{{ person.firstName }}</td> #}
+                <td><a href="{{ path('person_view', {'id': person.id}) }}">Détails</a></td>
+                <td>
+                    <a href="{{ path('person_delete', {'id': person.id}) }}" onClick="return confirm('Confirmez la suppression');" class="btn btn-danger">Supprimer</a>
+                </td>
+            </tr>            
+        {% endfor %}
     </tbody>
 </table>
 {% endblock %}

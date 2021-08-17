@@ -2,7 +2,14 @@
 
 {% block body %}
 
-<h1>{{ category.label }}</h1>
+<div class="d-flex flex-row justify-content-between my-4">
+        <h3>{{ category.label }}</h3>
+        {% if is_granted('ROLE_ADMIN') %}
+            <div>
+                <a href="{{ path('category_update', {'id': category.id}) }}" class="btn btn-primary">Modifier</a>
+            </div>
+        {% endif %}
+    </div>
 
 
 <div class="list-group">

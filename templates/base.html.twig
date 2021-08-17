@@ -38,6 +38,11 @@
                             <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
                         </li>
                         {% endif %}
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('tv_show_admin_list') }}">Admin</a>
+                            </li>
+                        {% endif %}
                     </li>    
                 </ul>
             </div>

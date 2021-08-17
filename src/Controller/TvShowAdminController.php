@@ -2,12 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
+use App\Entity\Person;
 use App\Entity\TvShow;
 use App\Form\TvShowType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\PersonRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/admin')]
 #[IsGranted('ROLE_ADMIN')]
@@ -20,11 +24,21 @@ class TvShowAdminController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(TvShow::class);
         $tvShows = $repository->findAll();
         // $tvShows = $repository->findByTitle($search);
+
+        /** @var CategoryRepository $repository */
+        $repository = $this->getDoctrine()->getRepository(Category::class);
+        $categories = $repository->findAll();
+
+        /** @var PersonRepository $repository */
+        $repository = $this->getDoctrine()->getRepository(Person::class);
+        $persons = $repository->findAll();
         
         return $this->render(
             'admin/list.html.twig',
             [
                 "tvShows" => $tvShows,
+                "categories" => $categories,
+                "persons" => $persons
             ]
         );
     }

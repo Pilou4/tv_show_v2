@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="d-flex flex-row justify-content-between my-4">
+        <h3>{{ person.fullName }}</h3>
+        {% if is_granted('ROLE_ADMIN') %}
+            <div>
+                <a href="{{ path('person_update', {'id': person.id}) }}" class="btn btn-primary">Modifier</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <ul>
+        <li>{{ person.firstName }}</li>
+        <li>{{ person.lastName }}</li>
+        {% for character in person.characters %}
+            {# {{character.name.tvShow.title}} #}
+            {# {% for tvShow in character.tvShow %}
+                {{ tvShow.title }}
+            {% endfor %} #}
+        {% endfor %}
+        {# {% if person.tvShows %}
+            <li>{{ person.tvShows }}</li>
+        {% endif %} #}
+         {# {% if person.directedTvShows.title  %}
+            <li>{{ person.directedTvShows.title }}</li>
+        {% endif %} #}
+        {# <li>{{ }}</li> #}
+        <li></li>
+    </ul>
+
+
+{# <div class="list-group">
+    {% for tvShow in category.tvShows %}
+        <a href="{{ path('tv_show_view', {'id': tvShow.id}) }}" class="list-group-item list-group-item-action">
+            {{ tvShow.title }}
+        </a>
+    {% endfor %}
+</div> #}
+
+
+{% endblock %}
