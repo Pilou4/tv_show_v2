@@ -10,8 +10,10 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -64,6 +66,22 @@ class TvShowType extends AbstractType
                 "required" => false
             ]
         );
+
+        $builder->add(
+            "picture",
+            FileType::class,
+            [
+                "label" => "Image",
+                "mapped" => false,
+                "required" => false,
+                "constraints" => [
+                    new Image([
+                        'maxSize' => '1024k'
+                    ])
+                ]
+            ]
+        );
+        
         // on demande au formulaire de rajouter une "réaction" un listener
         // lorsque l'evenement "PRE_SET_DATA" aura lieu, on executera la fonction anonyme suivante
         $builder->addEventListener(

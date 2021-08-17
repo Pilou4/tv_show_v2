@@ -2,14 +2,16 @@
 
 namespace App\Controller;
 
-use App\Entity\Category;
 use App\Entity\Person;
 use App\Entity\TvShow;
+use App\Entity\Category;
 use App\Form\TvShowType;
+use App\Service\Uploader;
 use App\Repository\PersonRepository;
 use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -17,6 +19,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[IsGranted('ROLE_ADMIN')]
 class TvShowAdminController extends AbstractController
 {
+    public function __construct(private Uploader $uploader)
+    {
+    }
+    
     #[Route('/list', name: 'tv_show_admin_list')]
     public function list()
     {
@@ -52,6 +58,15 @@ class TvShowAdminController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+
+            /** @var UploadedFile $pictureFile */
+            $pictureFile = $form->get('picture')->getData();
+
+            if ($pictureFile) {
+                $pictureFilename = $this->uploader->upload($pictureFile);
+                $tvShow->setPictureFile($pictureFilename);
+            }
+
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($tvShow);
             $manager->flush();
@@ -73,6 +88,15 @@ class TvShowAdminController extends AbstractController
         $form = $this->createForm(TvShowType::class, $tvShow);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
+
+            /** @var UploadedFile $pictureFile */
+            $pictureFile = $form->get('picture')->getData();
+
+            if ($pictureFile) {
+                $pictureFilename = $this->uploader->upload($pictureFile);
+                $tvShow->setPictureFile($pictureFilename);
+            }
+            
             $manager = $this->getDoctrine()->getManager(); 
             $manager->flush();
 

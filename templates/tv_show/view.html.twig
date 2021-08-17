@@ -37,7 +37,7 @@
                 {% endif %} #}
                 <div class="tv_show_view-persons-cards">
                     {% if character.pictureFilename is not empty %}
-                        <img src="{{ asset('uploads/' ~ character.pictureFilename) }}" class="mr-3" width="110">
+                        <img src="{{ asset('uploads/' ~ character.pictureFilename) }}">
                     {% endif %}
                     <div class="tv_show_view-name">
                         <h5>{{ character.name }}

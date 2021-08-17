@@ -22,6 +22,7 @@
             <a href="{{ path('tv_show_view', {'id': tvShow.id}) }}">
                 {{ tvShow.title }}
                 <p>{{ tvShow.seasons.count }} saisons</p>
+                <img src="{{ asset('uploads/' ~ tvShow.pictureFile) }}" alt="image">
             </a>
         {% endfor %}
     </main>

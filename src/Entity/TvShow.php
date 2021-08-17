@@ -70,6 +70,11 @@ class TvShow
      */
     private $rating;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $pictureFile;
+
     public function __construct()
     {
         $this->seasons = new ArrayCollection();
@@ -234,6 +239,18 @@ class TvShow
     public function setRating(?float $rating): self
     {
         $this->rating = $rating;
+
+        return $this;
+    }
+
+    public function getPictureFile(): ?string
+    {
+        return $this->pictureFile;
+    }
+
+    public function setPictureFile(?string $pictureFile): self
+    {
+        $this->pictureFile = $pictureFile;
 
         return $this;
     }
