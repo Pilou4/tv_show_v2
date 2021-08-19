@@ -18,14 +18,20 @@ class PersonType extends AbstractType
             'firstName',
             TextType::class,
             [
-                'label' => 'Prénom'
+                'label' => 'Prénom',
+                'label_attr' => ['class' => 'form-label'],
+                'attr' => ['class' => 'form-input'],
+                'help' => '* champs obligatoire'
             ]  
         );
         $builder->add(
             'lastName',
             TextType::class,
             [
-                'label' => 'Nom'
+                'label' => 'Nom',
+                'label_attr' => ['class' => 'form-label'],
+                'attr' => ['class' => 'form-input'],
+                'help' => '* champs obligatoire'
             ]
 
         );
@@ -34,12 +40,13 @@ class PersonType extends AbstractType
             BirthdayType::class,
             [
                 'label' => 'Date de naissance',
+                'label_attr' => ['class' => 'form-label'],
                 'placeholder' => [  
                     'day' => 'jour',
                     'month' => 'mois',
                     'year' => 'année',
                 ],
-                'format' => 'dd MM yyyy',
+                'format' => 'dd-MM-yyyy',
                 'required' => false
             ]
         );
@@ -51,7 +58,10 @@ class PersonType extends AbstractType
                     'homme' => 1,
                     'femme' => 2
                 ],
-                'label' => 'Genre'
+                'label' => 'Genre',
+                'label_attr' => ['class' => 'form-label'],
+                'attr' => ['class' => 'form-input'],
+                'help' => '* champs obligatoire'
             ]
         );
         

@@ -45,6 +45,7 @@ class CharacterController extends AbstractController
 
             $this->addFlash("success", "Le personnage a bien été ajouté");
             return $this->redirectToRoute("tv_show_view", ["id" => $tvShow->getId()]);
+            
         }
 
         return $this->render(

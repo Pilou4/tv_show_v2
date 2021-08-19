@@ -24,10 +24,11 @@ class Category
      * @ORM\Column(type="string", length=30)
      */
     #[
-        Length(min:3,
-        minMessage: 'Le nom doit contenir au moins {{ limit }} caractères',
-        max:30,
-        maxMessage: 'Le nom doit contenir au maximun {{ limit }} caractères',
+        Length(
+            min:3,
+            minMessage: 'Le nom doit contenir au moins {{ limit }} caractères',
+            max:30,
+            maxMessage: 'Le nom doit contenir au maximun {{ limit }} caractères',
         )
     ]
     private $label;

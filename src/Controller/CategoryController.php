@@ -71,6 +71,7 @@ class CategoryController extends AbstractController
             $manager->flush();
 
             $this->addFlash("success", "La catégorie a bien été modifié");
+            return $this->redirectToRoute("tv_show_admin_list");
         }
         return $this->render(
             'category/update.html.twig',

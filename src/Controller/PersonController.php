@@ -40,7 +40,9 @@ class PersonController extends AbstractController
             $manager->persist($person);
             $manager->flush();
 
-            $this->addFlash("success", "Le personnage a bien été ajoutée");
+            $this->addFlash("success", "La personne a bien été ajoutée");
+            return $this->redirectToRoute("tv_show_admin_list");
+
         }
         return $this->render(
             'person/add.html.twig',
@@ -61,7 +63,9 @@ class PersonController extends AbstractController
             $manager->persist($person);
             $manager->flush();
 
-            $this->addFlash("success", "L'acteur a bien été modifié");
+            $this->addFlash("success", "La personne a bien été modifié");
+            return $this->redirectToRoute("tv_show_admin_list");
+
         }
         return $this->render(
             'person/update.html.twig',
@@ -79,7 +83,7 @@ class PersonController extends AbstractController
         $manager = $this->getDoctrine()->getManager();
         $manager->remove($person);
         $manager->flush();
-        $this->addFlash("success", "L'acteur a bien été supprimé");
+        $this->addFlash("success", "La personne a bien été supprimé");
         return $this->redirectToRoute("tv_show_admin_list");
     }
 }

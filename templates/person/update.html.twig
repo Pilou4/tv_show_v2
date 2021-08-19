@@ -2,18 +2,15 @@
 
 {% block body %}
 
-<div class="d-flex flex-row justify-content-between mb-5">
-    <h2>Modifier un acteur</h2>
-    <div>
-        <a href="{{ path('person_delete', {id: person.id}) }}" onClick="return confirm('Confirmez la suppression');" class="btn btn-danger">Supprimer</a>
+    <h2 class="form-title">Modifier un acteur</h2>
+    <div class="form">
+        {{ form_start(personForm) }} 
+
+        {{ form_widget(personForm) }}
+
+        <input type="submit" value="Modifier" class="form-button">
+        {{ form_end(personForm) }}
     </div>
-</div>
-
-{{ form_start(personForm) }} 
-
-    {{ form_widget(personForm) }}
-
-    <input type="submit" value="Modifier" class="btn btn-primary">
-{{ form_end(personForm) }}
+    
 
 {% endblock %}

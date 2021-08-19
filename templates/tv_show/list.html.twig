@@ -19,11 +19,15 @@
 
     <main class="tv_show-list">
         {% for tvShow in tvShows %}
-            <a href="{{ path('tv_show_view', {'id': tvShow.id}) }}">
+            <a 
+            style="background-image: url({{ asset('uploads/' ~ tvShow.pictureFile) }});  background-size: cover;"
+            href="{{ path('tv_show_view', {'id': tvShow.id}) }}">
                 {{ tvShow.title }}
                 <p>{{ tvShow.seasons.count }} saisons</p>
-                <img src="{{ asset('uploads/' ~ tvShow.pictureFile) }}" alt="image">
-            </a>
+                {# {% if tvShow.pictureFile is not empty %}
+                    <img src="{{ asset('uploads/' ~ tvShow.pictureFile) }}" alt="image">
+                {% endif %}
+            </a> #}
         {% endfor %}
     </main>
 {% endblock %}

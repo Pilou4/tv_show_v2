@@ -27,10 +27,12 @@ class TvShowType extends AbstractType
             TextareaType::class,
             [
                 "label" => "Synopsis",
+                'label_attr' => ['class' => 'form-label'],
+                'attr' => ['class' => 'form-textarea'],
                 "required" => false,
-                "attr" => [
-                    "rows" => 5
-                ]
+                // "attr" => [
+                //     "rows" => 5
+                // ]
             ]
         );
         
@@ -39,6 +41,8 @@ class TvShowType extends AbstractType
             DateType::class,
             [
                 "label" => "Date de première diffusion",
+                'label_attr' => ['class' => 'form-label'],
+                'attr' => ['class' => 'form-input'],
                 "required" => false,
                 "widget" => "single_text"
             ]
@@ -60,6 +64,8 @@ class TvShowType extends AbstractType
             EntityType::class,
             [
                 "class" => Person::class,
+                'label_attr' => ['class' => 'form-label'],
+                'attr' => ['class' => 'form-input'],
                 "choice_label" => function (Person $person) {
                     return $person->getFullName();
                 },
@@ -72,6 +78,7 @@ class TvShowType extends AbstractType
             FileType::class,
             [
                 "label" => "Image",
+                'label_attr' => ['class' => 'form-label'],
                 "mapped" => false,
                 "required" => false,
                 "constraints" => [
@@ -108,7 +115,8 @@ class TvShowType extends AbstractType
                     TextType::class,
                     [
                         "label" => "Titre de la série",
-                        "disabled" => !empty($tvShow->getId())
+                        "disabled" => !empty($tvShow->getId()),
+                        'help' => '* champs obligatoire',
                     ]
                 );
             }

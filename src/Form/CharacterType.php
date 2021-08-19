@@ -20,7 +20,11 @@ class CharacterType extends AbstractType
             "name",
             TextType::class,
             [
-                "label" => "Nom du personnage"
+                "label" => "Nom du personnage",
+                'label_attr' => ['class' => 'form-label'],
+                'attr' => ['class' => 'form-input'],
+                'help' => '* champs obligatoire',
+
             ]
         );
 
@@ -32,12 +36,11 @@ class CharacterType extends AbstractType
                 "choice_label" => function (Person $person) {
                     return $person->getFullName();
                 },
+                // 'label_attr' => ['class' => 'form-label'],
                 "required" => false,
                 "multiple" => true,
                 "expanded" => true,
-                "attr" => [
-                    "class" => "compact-select-list"
-                ]
+
             ]
         );
 
@@ -46,6 +49,8 @@ class CharacterType extends AbstractType
             FileType::class,
             [
                 "label" => "Image",
+                'label_attr' => ['class' => 'form-label'],
+                'attr' => ['class' => 'form-input'],
                 "mapped" => false,
                 "required" => false,
                 "constraints" => [

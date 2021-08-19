@@ -23,7 +23,7 @@ class Character
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=100)
      */
     #[NotBlank(), Length(max: 255, maxMessage:"Cette valeur est trop longue (maximun {{ limit }} caractères)")]
     private $name;

@@ -1,23 +1,19 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <h2>Ajouter une série</h2>
+    <h2 class="form-title">Ajouter une série</h2>
 
-{{ form_start(tvShowForm) }} {# <form method=""post"> #}
+{{ form_start(tvShowForm) }}
     
     {# form_widget(tvShowForm) permet d'afficher tout les champs du formulaire d'un coup #}
-    <div class="row">
-        <div class="col-sm-6">
-            {{ form_row(tvShowForm.title) }}
-            {{ form_row(tvShowForm.releaseDate) }}
-            {{ form_row(tvShowForm.directedBy) }}
-            {{ form_row(tvShowForm.categories) }}
-            {{ form_row(tvShowForm.picture) }}
-        </div>
-        <div class="col-sm-6">
-            {{ form_row(tvShowForm.synopsis) }}
-        </div>
+    <div class="form">
+        {{ form_row(tvShowForm.title) }}
+        {{ form_row(tvShowForm.releaseDate) }}
+        {{ form_row(tvShowForm.directedBy) }}
+        {{ form_row(tvShowForm.categories) }}
+        {{ form_row(tvShowForm.picture) }}
+        {{ form_row(tvShowForm.synopsis) }}
+        <input type="submit" value="Ajouter" class="form-button">
     </div>
     
-    <input type="submit" value="Ajouter" class="btn btn-primary">
 {{ form_end(tvShowForm) }} {# </form> #}
 {% endblock %}
