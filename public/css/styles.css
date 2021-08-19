@@ -157,6 +157,7 @@ body {
     color: white;
     background-color: rgb(0,0,255);
 }
+
 /* ---- Formulaire Ajout et Modification ---- */
 .form-title {
     margin: 0;
@@ -218,40 +219,35 @@ body {
     color: wheat;
 }
 
-.btn_delete {
-    background-color: red;
-    font-size: 1.2em;
-    padding: .5em;
+/* ---- Page Admin ---- */
+.admin-tv_show {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.admin-list {
+    display: flex;
+    margin: 1em;
+    list-style-type: none;
+}
+
+.admin-list > li > a {
+    margin: 1em;
+    background-color: rgb(187, 185, 185);
+    color: rgb(29, 29, 29);
     border-radius: 10px;
+    padding: .5em 1em;
+    text-decoration: none;
+}
+
+.admin-list > li > a:hover {
+    background-color: grey;
     color: white;
+    text-decoration: none;
 }
 
-/* .compact-select-list {
-    height: 115px;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    overflow: auto;
-    padding: 5px 10px;
-}
-
-.sub-form {
-    background-color: whitesmoke;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    padding: 10px;
-}
-
-label {
-    font-weight: bold;
-}
-
-legend {
-    font-weight: bold;
-} */
-
-/* tableau page admin */
-table {
-    border: 1px solid #333;
+.table {
     margin: 1em;
 }
 
@@ -263,4 +259,32 @@ td {
     border: 1px solid #333;
     text-align: center;
     padding: .5em; 
+}
+
+.table-button_delete {
+    border: none;
+}
+
+.la-trash-alt {
+    color: blue;
+}
+
+.la-trash-alt:hover {
+    color: red;
+}
+
+.la-edit {
+    color: blue;
+}
+
+.la-edit:hover {
+    color: orange;
+}
+
+.btn_delete {
+    background-color: red;
+    font-size: 1.2em;
+    padding: .5em;
+    border-radius: 10px;
+    color: white;
 }

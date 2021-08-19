@@ -2,10 +2,6 @@
 
 {% block body %}
 <h1 class="tv_show-title">Séries télés</h1>        
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('tv_show_add') }}" class="btn btn-primary">Ajouter une série</a>
-    {% endif %}
-
     <form class="form-search">
         <input
             class="form-search-input"
