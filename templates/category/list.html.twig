@@ -1,13 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h2>Catégories</h2>
-    <div class="list-group">
-        {% for category in categories %}
-            <a href="{{ path('category_view', {'id': category.id}) }}" class="list-group-item list-group-item-action">
-                {{ category.label }}
-            </a>
-        {% endfor %}
-    </div>
+    <section class="category">
+        <h2>Catégories</h2>
+        <ul>
+            {% for category in categories %}
+                <li>
+                    <a href="{{ path('category_view', {'id': category.id}) }}">
+                        {{ category.label }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+       
+    </section>
+    
 
 {% endblock %}

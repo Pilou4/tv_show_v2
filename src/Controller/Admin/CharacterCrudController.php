@@ -25,11 +25,8 @@ class CharacterCrudController extends AbstractCrudController
             ImageField::new('pictureFilename')
                 ->setUploadDir('public/uploads/pictures_characters')
                 ->setBasePath('/uploads/pictures_characters'),
-                // ->setBasePath('/uploads'),
             AssociationField::new('actors','acteur'),
             AssociationField::new('tvShow','tv_show')
-            // CollectionField::new('actors', 'acteur')
-            //     ->setEntryType(CharacterType::class),
         ];
     }
 }

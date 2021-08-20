@@ -14,8 +14,8 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-            <a class="navbar-brand  mb-0 h1" href="{{ path('homepage') }}">
-                🎬 TvShow DB
+            <a class="navbar-brand mb-0 h1" href="{{ path('homepage') }}">
+                🎬 Tv_Show
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -30,7 +30,7 @@
                     </li>
                     {% if is_granted("ROLE_ADMIN") %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('tv_show_admin_list') }}">Admin</a>
+                            <a class="nav-link" href="{{ path('admin') }}">Admin</a>
                         </li>
                     {% endif %}
                     <li class="nav-item">

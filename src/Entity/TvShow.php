@@ -42,26 +42,6 @@ class TvShow
     private $releaseDate;
 
     /**
-     * @ORM\OneToMany(targetEntity=Season::class, mappedBy="tvShow", orphanRemoval=true, cascade={"persist"})
-     */
-    private $seasons;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Character::class, mappedBy="tvShow", orphanRemoval=true, cascade={"persist"})
-     */
-    private $characters;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Person::class, inversedBy="directedTvShows")
-     */
-    private $directedBy;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="tvShows")
-     */
-    private $categories;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
@@ -85,6 +65,26 @@ class TvShow
      * @ORM\Column(type="datetime_immutable")
      */
     private $updatedAt;
+
+        /**
+     * @ORM\OneToMany(targetEntity=Season::class, mappedBy="tvShow", orphanRemoval=true, cascade={"persist"})
+     */
+    private $seasons;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Character::class, mappedBy="tvShow", orphanRemoval=true, cascade={"persist"})
+     */
+    private $characters;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Person::class, inversedBy="directedTvShows")
+     */
+    private $directedBy;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="tvShows")
+     */
+    private $categories;
 
     public function __construct()
     {

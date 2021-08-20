@@ -2,14 +2,13 @@
 
 {% block body %}
     <main class="tv_show_view">
-        <h2 class="tv_show_view-title">{{ tvShow.title }}</h2> 
-            <div class="tv_show_view-categories">
-                {% for category in tvShow.categories %}
-                    <a href="{{ path('category_view', {'id': category.id}) }}">{{ category.label }}</a>
-                {% endfor %}
-            </div>
-        
-        <section class="tv_show_view-synopsis">
+        <h1>{{ tvShow.title }}</h1>
+        <ul>
+            {% for category in tvShow.categories %}
+                <li><a href="{{ path('category_view', {'id': category.id}) }}">{{ category.label }}</a></li>
+            {% endfor %}
+        </ul>
+        <article>
             <ul>
                 {% if tvShow.directedBy is not empty %}
                     <li><span>Show runner :</span> {{ tvShow.directedBy.fullName }}</li>
@@ -17,38 +16,27 @@
                 {% if tvShow.releaseDate is not empty %}
                     <li><span>Première diffusion :</span> {{ tvShow.releaseDate | date("d/m/Y") }}</li>
                 {% endif %}
-            </ul>    
-            <p class="tv_show_view-text"><span>Synopsis :</span> {{ tvShow.synopsis }}</p>    
-        </section>
-        <hr>
-
-        <h3 class="tv_show_view-subtitle">Personnages principaux</h3>
-        <section class="tv_show_view-persons">
+            </ul>
+            <p><span>Synopsis :</span> {{ tvShow.synopsis }}</p>
+        </article>
+        <h3>Personnages principaux</h3>
+        <section>
             {% for character in tvShow.characters %}
-                {# {% if not loop.first %}
-                <hr>
-                {% endif %} #}
-                <div class="tv_show_view-persons-cards">
+                <aside>
                     {% if character.pictureFilename is not empty %}
-                        <img src="{{ asset('uploads/' ~ character.pictureFilename) }}">
+                        <img src="{{ asset('uploads/pictures_characters/' ~ character.pictureFilename) }}">
                     {% endif %}
-                    <div class="tv_show_view-name">
-                        <h5>{{ character.name }}
-                            {% if is_granted('ROLE_ADMIN') %}
-                                <a href="{{ path('character_update', {'id': character.id}) }}"><i class="material-icons">edit</i></a>
-                            {% endif %}
-                        </h5>
-                        {% if character.actors is not empty %}
-                             {% for actor in character.actors %}
-                                <p>{{ actor.fullName }}</p>
-                            {% endfor %}
-                        {% endif %} 
-                    </div>                   
-                </div>
+                    <h5>{{ character.name }}</h5>
+                    {% if character.actors is not empty %}
+                        {% for actor in character.actors %}
+                            <p>{{ actor.fullName }}</p>
+                        {% endfor %}
+                    {% endif %} 
+                </aside>
             {% endfor %}
         </section>
-
-        <h3 class="tv_show_view-subtitle">Saison</h3>
+        
+        <h3>Saison</h3>
         <ul>
             {% for season in tvShow.seasons %}
             <li>

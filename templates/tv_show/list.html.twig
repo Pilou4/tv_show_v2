@@ -1,29 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1 class="tv_show-title">Séries télés</h1>        
-    <form class="form-search">
-        <input
-            class="form-search-input"
-            type="text"
-            value="{{ app.request.get('search') }}" 
-            name="search"
-            placeholder="Rechercher par titre"
-        >
-        <button type="submit" class="form-search-button">Rechercher</button>
-    </form>
-
-    <main class="tv_show-list">
-        {% for tvShow in tvShows %}
-            <a 
-            style="background-image: url({{ asset('uploads/' ~ tvShow.pictureFile) }});  background-size: cover;"
-            href="{{ path('tv_show_view', {'id': tvShow.id}) }}">
-                {{ tvShow.title }}
-                <p>{{ tvShow.seasons.count }} saisons</p>
-                {# {% if tvShow.pictureFile is not empty %}
-                    <img src="{{ asset('uploads/' ~ tvShow.pictureFile) }}" alt="image">
-                {% endif %}
-            </a> #}
-        {% endfor %}
+    <main class="tv_show_list">
+        <h1>Séries télés</h1>
+        <div>
+            <form>
+                <input
+                    type="text"
+                    value="{{ app.request.get('search') }}" 
+                    name="search"
+                    placeholder="Rechercher par titre"
+                >
+                <button type="submit">Rechercher</button>
+            </form>
+        </div>
+        <section>
+            {% for tvShow in tvShows %}
+                <article>
+                    <a href="{{ path('tv_show_view', {'id': tvShow.id}) }}">
+                        <h4>{{ tvShow.title }}</h4>
+                        {% if tvShow.pictureFile is not empty %}
+                            <img src="{{ asset('uploads/img-tv_show/' ~ tvShow.pictureFile) }}" alt="image">
+                        {% endif %}
+                        <p>{{ tvShow.seasons.count }} saisons</p>
+                    </a>
+                </article>
+            {% endfor %}
+        </section>        
     </main>
+
 {% endblock %}

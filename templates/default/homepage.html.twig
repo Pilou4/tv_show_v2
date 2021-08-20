@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="jumbotron">
-        <h1 class="display-4">{{ welcomeMessage }}</h1>
-        <p class="lead">Une base de donnée à moitié complète, pleine d'info non vérifiées 👍</p>
-        <hr class="my-4">
-        <p>{{ joke | raw }}</p>
-        <p>Pour commencer, explorez la liste des catégories de series en cliquant sur le bouton Explorer.</p>
-        <a class="btn btn-primary btn-lg" href="{{path('tv_show_list')}}" role="button">Explorer</a>
-    </div>
+    <main  class="homepage">
+        <section>
+            <h1>{{ welcomeMessage }}</h1>
+            <h2>Un site sur les séries télé <i class="las la-tv la-2x"></i></h2>
+            <p>Pour commencer, explorez la liste des catégories de series en cliquant sur le bouton Explorer.</p>
+            <ul>
+                <li><a href="{{path('category_list')}}">Explorer</a></li>
+            </ul>
+        </section>
+    </main>
 {% endblock %}

@@ -13,7 +13,7 @@ class WelcomeMessageGenerator
         $anonymousMessages = [
             "Coucou les p'tit loups !",
             "Salut les amis !",
-            "Kapoué !"
+            "Bienvenue !"
         ];
 
         $message = $anonymousMessages[mt_rand(0, count($anonymousMessages) - 1)];
