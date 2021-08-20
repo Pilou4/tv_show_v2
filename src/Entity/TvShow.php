@@ -42,12 +42,12 @@ class TvShow
     private $releaseDate;
 
     /**
-     * @ORM\OneToMany(targetEntity=Season::class, mappedBy="tvShow", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Season::class, mappedBy="tvShow", orphanRemoval=true, cascade={"persist"})
      */
     private $seasons;
 
     /**
-     * @ORM\OneToMany(targetEntity=Character::class, mappedBy="tvShow", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Character::class, mappedBy="tvShow", orphanRemoval=true, cascade={"persist"})
      */
     private $characters;
 
@@ -62,7 +62,7 @@ class TvShow
     private $categories;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $slug;
 
@@ -290,5 +290,9 @@ class TvShow
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    public function __toString() {
+        return $this->title;
     }
 }
