@@ -20,6 +20,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use Symfony\Component\Validator\Constraints\Length;
 
 class TvShowCrudController extends AbstractCrudController
 {
@@ -32,23 +33,19 @@ class TvShowCrudController extends AbstractCrudController
     {
         return [
             TextField::new('title', 'titre'),
-            TextField::new('slug'),
-            TextareaField::new('synopsis'),
+            TextField::new('slug')->hideOnForm(),
+            TextareaField::new('synopsis')->setMaxLength(20),
             ImageField::new('pictureFile')
                 ->setUploadDir('public/uploads/img-tv_show')
                 ->setBasePath('/uploads/img-tv_show'),
             DateField::new('releaseDate'),
             AssociationField::new('directedBy'),
             AssociationField::new('categories', 'Categorie'),
-            CollectionField::new('seasons', 'saisons')
-                ->allowAdd()
-                ->setEntryType(SeasonType::class),
-            DateField::new('createdAt')->onlyOnIndex(),
-            DateField::new('updatedAt')->onlyOnIndex(),
+            AssociationField::new('seasons', 'saison')->hideOnForm(),
+            // CollectionField::new('seasons', 'saisons')
+            //     ->allowAdd()
+            //     ->setEntryType(SeasonType::class),
             NumberField::new('rating'),
-            CollectionField::new('characters', 'acteurs')
-                ->allowAdd()
-                ->setEntryType(CharacterType::class),
         ];
     }
 }

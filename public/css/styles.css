@@ -280,24 +280,38 @@ span {
 }
 
 .tv_show_view > section > aside {
-    border: 1px solid red;
+    font-family : 'Tinos', 'sans-serif';
     padding: 1em;
     margin: 1em;
 }
 
-.tv_show_view > section > aside > h5{
+.tv_show_view > section > aside > h5 {
     text-align: center;
-    margin: 0;
+    margin: 10px 0 0 0;
 }
 
-.tv_show_view > section > aside {
-    
+.tv_show_view > section > aside > p {
+    text-align: center;
 }
 
 .tv_show_view > section > aside > img {
     width: 150px;
     min-height: 200px;
 }
+
+.tv_show_view > aside {
+
+}
+
+.tv_show_view > aside > ul {
+    list-style-type: none;
+}
+
+.tv_show_view > aside > ul > li > a {
+    color: black;
+}
+
+
 
 /* Formulaire boutton de recherche (page tv_show_list) */
 .form-search {

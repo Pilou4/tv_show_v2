@@ -36,19 +36,21 @@
             {% endfor %}
         </section>
         
-        <h3>Saison</h3>
-        <ul>
-            {% for season in tvShow.seasons %}
-            <li>
-                <a href="{{ path('season_view', {'id': season.id}) }}">
-                    Saison n°{{ season.number }} ({{ season.year }})
-                </a>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('season_update', {'id': season.id}) }}"><i class="material-icons">edit</i></a>
-                {% endif %}
-            </li>
-            {% endfor %}
-        </ul>
+        <h3>Saisons</h3>
+        <aside>
+            <ul>
+                {% for season in tvShow.seasons %}
+                    <li>
+                        <a href="{{ path('season_view', {'id': season.id}) }}">
+                            Saison n°{{ season.number }} ({{ season.year }})
+                        </a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('season_update', {'id': season.id}) }}"><i class="material-icons">edit</i></a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </aside>
     </main>
 
 {% endblock %}

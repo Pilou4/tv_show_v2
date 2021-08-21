@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
 class PersonCrudController extends AbstractCrudController
 {
@@ -21,13 +22,11 @@ class PersonCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('firstName'),
-            TextField::new('lastName'),
-            DateField::new('birthDate'),
-            ChoiceField::new('gender')->setChoices([ 'homme' =>'homme', 'femme' =>'femme']),
-            CollectionField::new('characters')
-                ->allowAdd()
-                ->setEntryType(CharacterType::class),
+            TextField::new('firstName', 'Prénom'),
+            TextField::new('lastName', 'Nom'),
+            DateField::new('birthDate', 'Date de naissance'),
+            ChoiceField::new('gender', 'Genre')->setChoices([ 'homme' =>'homme', 'femme' =>'femme']),
+            AssociationField::new('characters', 'personnages')
         ];
     }
 }

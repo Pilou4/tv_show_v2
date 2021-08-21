@@ -4,9 +4,7 @@
 
 <div class="d-flex flex-row justify-content-between mb-5">
     <h2>Modifier un épisode</h2>
-    <div>
-        <a href="{{ path('episode_delete', {id: episode.id}) }}" onClick="return confirm('Confirmez la suppression');" class="btn btn-danger">Supprimer</a>
-    </div>
+
 </div>
 
 {{ form_start(episodeForm) }}

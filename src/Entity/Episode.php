@@ -90,4 +90,9 @@ class Episode
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->getNumber() . ' - ' . $this->getTitle();
+    }
 }
