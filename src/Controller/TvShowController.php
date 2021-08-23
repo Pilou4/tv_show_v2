@@ -40,7 +40,7 @@ class TvShowController extends AbstractController
 
     // Autres syntaxe pour requierements
     // #[Route('/blog/{page<\d+>}', name: 'blog_list')]
-    #[Route('/{id}', name: 'tv_show_view', requirements: ['id' => '\d+'])]
+    #[Route('/{id}/{slug}', name: 'tv_show_view', requirements: ['id' => '\d+'])]
     public function view($id): Response
     {
          /** @var TvShowRepository $repository */

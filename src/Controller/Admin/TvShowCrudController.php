@@ -42,6 +42,8 @@ class TvShowCrudController extends AbstractCrudController
             AssociationField::new('directedBy'),
             AssociationField::new('categories', 'Categorie'),
             AssociationField::new('seasons', 'saison')->hideOnForm(),
+            DateField::new('createdAt')->hideOnForm(),
+            DateField::new('updatedAt')->hideOnForm(),
             // CollectionField::new('seasons', 'saisons')
             //     ->allowAdd()
             //     ->setEntryType(SeasonType::class),

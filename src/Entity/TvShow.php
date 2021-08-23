@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity(repositoryClass=TvShowRepository::class)
  */
-#[UniqueEntity("title")]
+#[UniqueEntity("title", "slug")]
 class TvShow
 {
     /**

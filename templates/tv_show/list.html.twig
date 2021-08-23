@@ -17,7 +17,7 @@
         <section>
             {% for tvShow in tvShows %}
                 <article>
-                    <a href="{{ path('tv_show_view', {'id': tvShow.id}) }}">
+                    <a href="{{ path('tv_show_view', {'id': tvShow.id, 'slug': tvShow.slug}) }}">
                         <h4>{{ tvShow.title }}</h4>
                         {% if tvShow.pictureFile is not empty %}
                             <img src="{{ asset('uploads/img-tv_show/' ~ tvShow.pictureFile) }}" alt="image">
@@ -27,7 +27,7 @@
                 </article>
             {% endfor %}
         </section>
-        <div class="navigation">
+        <div class="pagination">
             {{ knp_pagination_render(tvShows) }}
         </div>     
     </main>

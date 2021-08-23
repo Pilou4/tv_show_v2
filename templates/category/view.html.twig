@@ -7,7 +7,7 @@
         <ul>
             {% for tvShow in category.tvShows %}
                 <li>
-                    <a href="{{ path('tv_show_view', {'id': tvShow.id}) }}">
+                    <a href="{{ path('tv_show_view', {'id': tvShow.id, 'slug': tvShow.slug}) }}">
                         {{ tvShow.title }}
                     </a>
                 </li>

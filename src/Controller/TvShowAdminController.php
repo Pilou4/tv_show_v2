@@ -9,6 +9,7 @@ use App\Form\TvShowType;
 use App\Service\Uploader;
 use App\Repository\PersonRepository;
 use App\Repository\CategoryRepository;
+use DateTimeImmutable;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -85,6 +86,9 @@ class TvShowAdminController extends AbstractController
     #[Route('/tv-show/{id}/update', name: 'tv_show_update', requirements: ['id' => '\d+'])]
     public function update(TvShow $tvShow, Request $request)
     {
+        $tvShow->setCreatedAt($tvShow->getCreatedAt());
+        $tvShow->setUpdatedAt(new DateTimeImmutable());
+
         $form = $this->createForm(TvShowType::class, $tvShow);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {

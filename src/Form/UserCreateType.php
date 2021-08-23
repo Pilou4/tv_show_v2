@@ -18,7 +18,9 @@ class UserCreateType extends AbstractType
             'email',
             EmailType::class,
             [
-                "label" => "Adresse email"
+                "label" => "Adresse email",
+                'label_attr' => ['class' => 'form-label'],
+                'attr' => ['class' => 'form-input'],
             ]
         );
 
@@ -39,8 +41,14 @@ class UserCreateType extends AbstractType
             [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les deux mot de passe ne sont pas identiques',
-                'first_options'  => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Repeter le mot de passe'],
+                'first_options'  => [
+                    'label' => 'Mot de passe',
+                    'label_attr' => ['class' => 'form-label']
+                ],
+                'second_options' => [
+                    'label' => 'Repeter le mot de passe',
+                    'label_attr' => ['class' => 'form-label']
+                ],
             ]
         );
     }

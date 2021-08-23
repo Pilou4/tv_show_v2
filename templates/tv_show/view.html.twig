@@ -24,7 +24,7 @@
             {# <i class="lar la-arrow-alt-circle-left la-3x"></i>
             <i class="lar la-arrow-alt-circle-right la-3x"></i> #}
             {% for character in tvShow.characters %}
-                <aside>
+                <aside col="4">
                     {% if character.pictureFilename is not empty %}
                         <img src="{{ asset('uploads/pictures_characters/' ~ character.pictureFilename) }}">
                     {% endif %}

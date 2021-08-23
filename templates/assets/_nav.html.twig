@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+            <a class="navbar-brand mb-0 h1" href="{{ path('homepage') }}">
+                🎬 Tv_Show
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('tv_show_list') }}">Séries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('category_list') }}">Catégories</a>
+                    </li>
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('admin') }}">Admin</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        {% if app.user %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('user_password_change') }}">Changer le mot de passe</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Deconnexion</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('user_account_create') }}" class="">Créer un compte</a>
+                        </li>
+                        {% endif %}
+                    </li>    
+                </ul>
+            </div>
+        </nav>
