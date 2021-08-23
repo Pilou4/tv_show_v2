@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\TvShow;
 use App\Form\TvShowType;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,14 +14,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class TvShowController extends AbstractController
 {
     #[Route('/list', name: 'tv_show_list')]
-    public function list(Request $request): Response
+    public function list(Request $request, PaginatorInterface $paginator): Response
     {
         $search = $request->query->get('search');
 
         /** @var TvShowRepository $repository */
         $repository = $this->getDoctrine()->getRepository(TvShow::class);
         // $tvShows = $repository->findAll();
-        $tvShows = $repository->findByTitle($search);
+        // $tvShows = $repository->findAllVisibleQuery($search);
+
+        $tvShows = $paginator
+            ->paginate($repository->findAllVisibleQuery($search),
+               $request->query->getInt('page', 1),
+               1     
+            );
+
 
 
         return $this->render('tv_show/list.html.twig',

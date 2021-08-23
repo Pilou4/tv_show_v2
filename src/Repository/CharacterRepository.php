@@ -19,6 +19,8 @@ class CharacterRepository extends ServiceEntityRepository
         parent::__construct($registry, Character::class);
     }
 
+   
+
     // /**
     //  * @return Character[] Returns an array of Character objects
     //  */
