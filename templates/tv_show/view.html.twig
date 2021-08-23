@@ -21,6 +21,8 @@
         </article>
         <h3>Personnages principaux</h3>
         <section>
+            {# <i class="lar la-arrow-alt-circle-left la-3x"></i>
+            <i class="lar la-arrow-alt-circle-right la-3x"></i> #}
             {% for character in tvShow.characters %}
                 <aside>
                     {% if character.pictureFilename is not empty %}
@@ -44,6 +46,11 @@
                         <a href="{{ path('season_view', {'id': season.id}) }}">
                             Saison n°{{ season.number }} ({{ season.year }})
                         </a>
+                        <ul>
+                            {% for episode in season.episodes %}
+                                <li>épisode n°{{ episode.number }} - {{ episode.title }}</li>
+                            {% endfor %}
+                        </ul>
                         {% if is_granted('ROLE_ADMIN') %}
                             <a href="{{ path('season_update', {'id': season.id}) }}"><i class="material-icons">edit</i></a>
                         {% endif %}

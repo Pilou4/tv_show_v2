@@ -276,8 +276,17 @@ span {
 
 .tv_show_view > section {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
+
+/* .la-arrow-alt-circle-left {
+    position: absolute;
+}
+
+.la-arrow-alt-circle-rigth {
+    position: absolute;
+    opacity: 80%;
+} */
 
 .tv_show_view > section > aside {
     font-family : 'Tinos', 'sans-serif';
@@ -305,10 +314,27 @@ span {
 
 .tv_show_view > aside > ul {
     list-style-type: none;
+    /* display: flex; */
 }
 
 .tv_show_view > aside > ul > li > a {
     color: black;
+    font-family:'Comfortaa', cursif;
+    font-size: 1.5em;
+}
+
+.tv_show_view > aside > ul > li > a:hover {
+    color: red;
+    text-decoration: none;
+}
+
+.tv_show_view > aside > ul > li > ul {
+    list-style-type: none;
+}
+
+
+.tv_show_view > aside > ul > li > ul > li {
+    margin: 15px;
 }
 
 

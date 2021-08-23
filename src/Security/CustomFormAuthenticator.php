@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,7 +50,6 @@ class CustomFormAuthenticator extends AbstractLoginFormAuthenticator
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
-
         
         return new RedirectResponse($this->urlGenerator->generate('homepage'));
         // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
