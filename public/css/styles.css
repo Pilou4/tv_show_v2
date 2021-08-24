@@ -3,8 +3,68 @@ body {
 }
 
 body > nav {
+    background-color: rgb(255, 193 , 7);
     font-family : 'Tinos', 'sans-serif';
     font-size: 1.3em;
+}
+
+/* ---- Footer ---- */
+footer {
+    margin-top: 40px;
+    background-color: rgb(255, 193 , 7);
+    font-family : 'Tinos', 'sans-serif';
+    font-size: 1.3em;
+}
+
+footer > ul {
+    list-style-type: none;
+    display: flex;
+    padding: .7em 0;
+    justify-content: center;
+}
+
+footer > ul > li > a {
+    color: black;
+    margin: .5em;
+    padding: .5em;
+}
+
+footer > ul > li > a:hover {
+    color: blue;
+    text-decoration: none;
+}
+
+/* ---- Mentions-Légales ---- */
+.legal-mentions {
+    width: 80%;
+    margin: 0 auto;
+    /* padding: 5em 5em 12em 5em; */
+    font-family : 'Tinos', 'sans-serif';
+}
+
+.legal-mentions > h1 {
+    margin-top: 1em;
+    padding: 1em;
+    text-align: center;
+    font-size: 2em;
+    font-family:'Comfortaa', cursif;
+}
+
+
+.legal-mentions > article {
+    padding: .3em;
+}
+
+.legal-mentions > article > h2 {
+    padding: .2em;
+    color: rgb(58,102,177);
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.legal-mentions > article > p {
+    padding: .5em;
+    
 }
 
 /* ---- homepage ---- */
