@@ -24,32 +24,6 @@ class TvShowAdminController extends AbstractController
     {
     }
     
-    #[Route('/list', name: 'tv_show_admin_list')]
-    public function list()
-    {
-        /** @var TvShowRepository $repository */
-        $repository = $this->getDoctrine()->getRepository(TvShow::class);
-        $tvShows = $repository->findAll();
-        // $tvShows = $repository->findByTitle($search);
-
-        /** @var CategoryRepository $repository */
-        $repository = $this->getDoctrine()->getRepository(Category::class);
-        $categories = $repository->findAll();
-
-        /** @var PersonRepository $repository */
-        $repository = $this->getDoctrine()->getRepository(Person::class);
-        $persons = $repository->findAll();
-        
-        return $this->render(
-            'admin/list.html.twig',
-            [
-                "tvShows" => $tvShows,
-                "categories" => $categories,
-                "persons" => $persons
-            ]
-        );
-    }
-
     #[Route('tv-show/add', name: 'tv_show_add')]
     public function add(Request $request)
     {

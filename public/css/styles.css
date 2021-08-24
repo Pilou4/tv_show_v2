@@ -70,6 +70,7 @@ footer > ul > li > a:hover {
 /* ---- homepage ---- */
 .homepage {
     width: 80%;
+    min-height: 82vh;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -77,7 +78,7 @@ footer > ul > li > a:hover {
 }
 
 .homepage > section {
-    margin-top: 5em;
+    margin-top: 1em;
     padding: 1em;
     background-color: rgba(255, 166, 0, 80%);
     border-radius: 10px;
@@ -133,6 +134,7 @@ footer > ul > li > a:hover {
 /* ---- Page Category ---- */
 .category {
     width: 80%;
+    min-height: 82vh;
     margin: 0 auto;
 }
 .category > h2 {
@@ -385,27 +387,22 @@ span {
 
 .tv_show_view > aside > ul {
     list-style-type: none;
-    /* display: flex; */
 }
 
-.tv_show_view > aside > ul > li > a {
-    color: black;
+.tv_show_view > aside > ul > li > p {
     font-family:'Comfortaa', cursif;
     font-size: 1.5em;
-}
-
-.tv_show_view > aside > ul > li > a:hover {
-    color: red;
-    text-decoration: none;
+    margin: 0;
 }
 
 .tv_show_view > aside > ul > li > ul {
     list-style-type: none;
 }
 
-
 .tv_show_view > aside > ul > li > ul > li {
-    margin: 15px;
+    margin: 5px 0;
+    font-family : 'Tinos', 'sans-serif';
+    font-size: 1.2em;
 }
 
 

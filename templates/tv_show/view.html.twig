@@ -43,17 +43,12 @@
             <ul>
                 {% for season in tvShow.seasons %}
                     <li>
-                        <a href="{{ path('season_view', {'id': season.id}) }}">
-                            Saison n°{{ season.number }} ({{ season.year }})
-                        </a>
+                       <p>Saison n°{{ season.number }} ({{ season.year }})</p>
                         <ul>
                             {% for episode in season.episodes %}
                                 <li>épisode n°{{ episode.number }} - {{ episode.title }}</li>
                             {% endfor %}
                         </ul>
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <a href="{{ path('season_update', {'id': season.id}) }}"><i class="material-icons">edit</i></a>
-                        {% endif %}
                     </li>
                 {% endfor %}
             </ul>
