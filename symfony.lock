@@ -106,8 +106,23 @@
             "ref": "b131e6cbfe1b898a508987851963fff485986285"
         }
     },
+    "egulias/email-validator": {
+        "version": "3.1.1"
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
+    },
+    "friendsofsymfony/ckeditor-bundle": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "f5ad42002183a6881962683e6d84bbb25cdfce5d"
+        },
+        "files": [
+            "config/packages/fos_ckeditor.yaml"
+        ]
     },
     "fzaninotto/faker": {
         "version": "v1.5.0"
@@ -193,6 +208,9 @@
     "symfony/event-dispatcher-contracts": {
         "version": "v2.4.0"
     },
+    "symfony/expression-language": {
+        "version": "v5.3.4"
+    },
     "symfony/filesystem": {
         "version": "v5.3.4"
     },
@@ -247,6 +265,18 @@
     },
     "symfony/intl": {
         "version": "v5.3.4"
+    },
+    "symfony/mailer": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.3",
+            "ref": "15658c2a0176cda2e7dba66276a2030b52bd81b2"
+        },
+        "files": [
+            "config/packages/mailer.yaml"
+        ]
     },
     "symfony/maker-bundle": {
         "version": "1.0",
