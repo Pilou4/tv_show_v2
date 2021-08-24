@@ -18,7 +18,7 @@ class ContactType extends AbstractType
             TextType::class, 
             [
                 'label' => 'object',
-                'label_attr' => ['class' => 'form-contact-object-label'],
+                'label_attr' => ['class' => 'form-label'],
                 'attr' => [
                     'class' => 'form-contact-object'
                 ]
@@ -29,7 +29,7 @@ class ContactType extends AbstractType
             EmailType::class,
             [
                 'label' => 'votre e-mail',
-                'label_attr' => ['class' => 'form-contact-email-label'],
+                'label_attr' => ['class' => 'form-label'],
                 'attr' => [
                     'class' => 'form-contact-email'
                 ]
@@ -40,7 +40,7 @@ class ContactType extends AbstractType
             CKEditorType::class, 
             [
                 'label' => 'Votre message',
-                'label_attr' => ['class' => 'form-contact-message-label'],
+                'label_attr' => ['class' => 'form-label'],
                 'attr' => [
                     'class' => 'form-contact-message'
                 ]

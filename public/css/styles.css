@@ -533,6 +533,20 @@ span {
     color: wheat;
 }
 
+.form-contact-button {
+    position: relative;
+    left: 41%;
+    margin: 0 auto;
+    font-size: 1.2em;
+    padding: .3em .6em;
+    border-radius: 10px;
+}
+
+.form-contact-button:hover {
+    background-color: rgba(0, 0, 255, 0.61);
+    color: wheat;
+}
+
 /* ---- Page Admin ---- */
 .admin-tv_show {
     display: flex;
