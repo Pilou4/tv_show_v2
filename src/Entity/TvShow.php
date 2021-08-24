@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints\Type;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=TvShowRepository::class)
@@ -44,6 +45,7 @@ class TvShow
     private $releaseDate;
 
     /**
+     * @Gedmo\Slug(fields={"title"})
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
@@ -238,14 +240,7 @@ class TvShow
     {
         return $this->slug;
     }
-
-    public function setSlug(?string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
+    
     public function getRating(): ?float
     {
         return $this->rating;
