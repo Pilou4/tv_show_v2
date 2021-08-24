@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/tv_show')]
 class TvShowController extends AbstractController
 {
-    #[Route('/list', name: 'tv_show_list')]
+    #[Route('/list', name: 'tv_show_list', methods: 'GET')]
     public function list(Request $request, PaginatorInterface $paginator): Response
     {
         $search = $request->query->get('search');
@@ -26,7 +26,7 @@ class TvShowController extends AbstractController
         $tvShows = $paginator
             ->paginate($repository->findAllVisibleQuery($search),
                $request->query->getInt('page', 1),
-               1     
+               12    
             );
 
 
@@ -40,7 +40,7 @@ class TvShowController extends AbstractController
 
     // Autres syntaxe pour requierements
     // #[Route('/blog/{page<\d+>}', name: 'blog_list')]
-    #[Route('/{id}/{slug}', name: 'tv_show_view', requirements: ['id' => '\d+'])]
+    #[Route('/{id}/{slug}', name: 'tv_show_view', requirements: ['id' => '\d+'], methods: 'GET')]
     public function view($id): Response
     {
          /** @var TvShowRepository $repository */

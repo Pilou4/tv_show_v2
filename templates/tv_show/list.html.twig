@@ -16,7 +16,7 @@
         </div>
         <section>
             {% for tvShow in tvShows %}
-                <article>
+                <article class="link">
                     <a href="{{ path('tv_show_view', {'id': tvShow.id, 'slug': tvShow.slug}) }}">
                         <h4>{{ tvShow.title }}</h4>
                         {% if tvShow.pictureFile is not empty %}

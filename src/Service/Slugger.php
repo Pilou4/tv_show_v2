@@ -2,16 +2,15 @@
 
 namespace App\Service;
 
-use Symfony\Component\String\Slugger\SluggerInterface;
-
 class Slugger
 {
-    public function __construct(private SluggerInterface $slugger)
-    {
-    }
 
     public function sluggify($str)
     {
-        return $this->slugger->slug($str);
+        $str = trim($str);
+        $str = str_replace(" ", "-", $str);
+        $str = strtolower($str);
+
+        return $str;
     }
 }

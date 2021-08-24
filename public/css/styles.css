@@ -224,6 +224,7 @@ footer > ul > li > a:hover {
 
 .tv_show_list > section {
     display: flex;
+    flex-wrap: wrap;
     padding: 2em;
 }
 
@@ -351,15 +352,6 @@ span {
     display: flex;
     flex-wrap: wrap;
 }
-
-/* .la-arrow-alt-circle-left {
-    position: absolute;
-}
-
-.la-arrow-alt-circle-rigth {
-    position: absolute;
-    opacity: 80%;
-} */
 
 .tv_show_view > section > aside {
     font-family : 'Tinos', 'sans-serif';

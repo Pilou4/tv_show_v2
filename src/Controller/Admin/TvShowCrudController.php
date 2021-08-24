@@ -41,12 +41,12 @@ class TvShowCrudController extends AbstractCrudController
             DateField::new('releaseDate'),
             AssociationField::new('directedBy'),
             AssociationField::new('categories', 'Categorie'),
-            AssociationField::new('seasons', 'saison')->hideOnForm(),
+            // AssociationField::new('seasons', 'saison'),
             DateField::new('createdAt')->hideOnForm(),
             DateField::new('updatedAt')->hideOnForm(),
-            // CollectionField::new('seasons', 'saisons')
-            //     ->allowAdd()
-            //     ->setEntryType(SeasonType::class),
+            CollectionField::new('seasons', 'saisons')
+                ->allowAdd()
+                ->setEntryType(SeasonType::class),
             NumberField::new('rating'),
         ];
     }
