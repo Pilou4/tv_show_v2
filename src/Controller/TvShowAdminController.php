@@ -59,6 +59,8 @@ class TvShowAdminController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            $tvShow->setCreatedAt(new DateTimeImmutable());
+            $tvShow->setUpdatedAt(new DateTimeImmutable());
 
             /** @var UploadedFile $pictureFile */
             $pictureFile = $form->get('picture')->getData();
@@ -86,7 +88,6 @@ class TvShowAdminController extends AbstractController
     #[Route('/tv-show/{id}/update', name: 'tv_show_update', requirements: ['id' => '\d+'])]
     public function update(TvShow $tvShow, Request $request)
     {
-        $tvShow->setCreatedAt($tvShow->getCreatedAt());
         $tvShow->setUpdatedAt(new DateTimeImmutable());
 
         $form = $this->createForm(TvShowType::class, $tvShow);

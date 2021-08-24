@@ -61,11 +61,13 @@ class TvShow
     private $pictureFile;
 
     /**
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime_immutable")
      */
     private $createdAt;
 
     /**
+     * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime_immutable")
      */
     private $updatedAt;
@@ -95,8 +97,6 @@ class TvShow
         $this->seasons = new ArrayCollection();
         $this->characters = new ArrayCollection();
         $this->categories = new ArrayCollection();
-        $this->createdAt = new DateTimeImmutable();
-        $this->updatedAt = new DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -240,7 +240,7 @@ class TvShow
     {
         return $this->slug;
     }
-    
+
     public function getRating(): ?float
     {
         return $this->rating;
