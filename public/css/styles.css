@@ -230,6 +230,7 @@ body > nav {
 /* ---- page tv_show_view ---- */
 .tv_show_view {
     width: 80%;
+    min-height: 83vh;
     margin: 0 auto;
     color: rgb(177, 176, 176);
     border-radius: 15px;
