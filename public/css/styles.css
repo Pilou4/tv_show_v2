@@ -181,14 +181,14 @@ body > nav {
 .tv_show_list > section {
     display: flex;
     flex-wrap: wrap;
-    padding: 2em;
+    padding: .2em;
 }
 
 .tv_show_list > section > article {
     min-width: 250px;
     border-radius: 10px;
-    margin: 1em;
-    padding: 2em;
+    margin: .3em;
+    padding: .2em;
 }
 
 .tv_show_list > section > article:hover {
@@ -203,7 +203,7 @@ body > nav {
 
 .tv_show_list > section > article > a:hover {
     text-decoration: none;
-    color: orange;
+    color: or;
 }
 
 .tv_show_list > section > article > a > h4 {
