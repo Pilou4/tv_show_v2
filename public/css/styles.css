@@ -3,6 +3,7 @@ body {
     background-image: url('../bacground/tigre.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    font-size: 1.4em;
 }
 
 body > nav {
@@ -187,23 +188,22 @@ body > nav {
     min-width: 250px;
     border-radius: 10px;
     margin: 1em;
-    padding: .2em;
+    padding: 2em;
 }
 
 .tv_show_list > section > article:hover {
-    background-color: rgb(204, 198, 198);
     padding: 1.5em;
 }
 
 .tv_show_list > section > article > a {
     /* color: rgb(177, 176, 176); */
     color: white;
+    font-weight: bold;
 }
 
 .tv_show_list > section > article > a:hover {
     text-decoration: none;
-    color: white;
-    font-weight: bold;
+    color: orange;
 }
 
 .tv_show_list > section > article > a > h4 {
