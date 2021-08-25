@@ -115,7 +115,6 @@ body > nav {
     text-decoration: none;
 }
 
-
 /* ---- page tv_show_list ---- */
 .tv_show_list {
     width: 80%;
@@ -197,7 +196,8 @@ body > nav {
 }
 
 .tv_show_list > section > article > a {
-    color: rgb(177, 176, 176);
+    /* color: rgb(177, 176, 176); */
+    color: white;
 }
 
 .tv_show_list > section > article > a:hover {
@@ -232,7 +232,8 @@ body > nav {
 .tv_show_view {
     width: 80%;
     margin: 0 auto;
-    color: rgb(177, 176, 176);
+    color: white;
+    /* color: rgb(177, 176, 176); */
     border-radius: 15px;
     padding: 1em;
     margin-top: 2em;
@@ -260,7 +261,8 @@ body > nav {
     font-family : 'Tinos', 'sans-serif';
     font-size: 1.5em;
     margin: 0 1em;
-    color: rgb(177, 176, 176);
+    /* color: rgb(177, 176, 176); */
+    color: white;
 }
 
 .tv_show_view > ul > li > a:hover {
@@ -395,6 +397,7 @@ footer > ul > li > a:hover {
 
 .legal-mentions > h1 {
     margin-top: 1em;
+    color: orange;
     padding: 1em;
     text-align: center;
     font-size: 2em;
@@ -404,6 +407,7 @@ footer > ul > li > a:hover {
 
 .legal-mentions > article {
     padding: .3em;
+    color: white;
 }
 
 .legal-mentions > article > h2 {
@@ -471,12 +475,9 @@ footer > ul > li > a:hover {
 .form-label {
     font-family : 'Tinos', serif;
     font-size: 1.3em;
+    color: black;
 }
 
-.col-form-label {
-    font-family : 'Tinos', serif;
-    font-size: 1.3em;
-}
 .form-check {
     font-family : 'Tinos', serif;
 }
