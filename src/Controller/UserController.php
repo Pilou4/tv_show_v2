@@ -56,7 +56,6 @@ class UserController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function changePassword(Request $request, UserPasswordHasherInterface $passwordEncoder) 
     {
-        // je demande à Symfony de me donner l'utilisateur actuelement connecté grace a la methode suivante :
         /** @var User $user */
         $user = $this->getUser();
         $form = $this->createForm(UserPasswordUpdateType::class, $user);
