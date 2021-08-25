@@ -332,7 +332,7 @@ span {
 
 .tv_show_view > section > aside > img {
     width: 150px;
-    min-height: 200px;
+    height: 200px;
 }
 
 .tv_show_view > aside {
