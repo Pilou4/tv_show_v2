@@ -115,4 +115,9 @@ class Season
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return 'saison n°' . $this->number;
+    }
 }
