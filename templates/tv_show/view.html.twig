@@ -50,14 +50,14 @@
     </main>
     {% block javascripts %}
         <script>
-            {# $(".tv_show_view")
+            $(".tv_show_view")
             .css(
                 {
                     "background-image": "url('{{ asset('uploads/img-tv_show/' ~ tvShow.pictureFile) }}')",
                     "background-repeat": "no-repeat",
-                    "background-size": "cover"
+                    "background-size": "cover",
                 }
-            ) #}
+            ) 
         </script>
     {% endblock %}
 {% endblock %}
