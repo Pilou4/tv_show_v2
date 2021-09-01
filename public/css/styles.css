@@ -763,6 +763,10 @@ footer > ul {
         margin-bottom: 20px;
     }
 
+    .tv_show_view__episode {
+        margin-left: -23px;
+    }
+
   }
 
   @media screen and (max-width: 300px) {
