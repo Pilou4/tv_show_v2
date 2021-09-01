@@ -289,7 +289,6 @@ footer > ul {
 }
 
 .synopsis {
-    flex: 1;
     padding: 20px;
 }
 
@@ -744,6 +743,28 @@ footer > ul {
     
   }
 
+  @media screen and (max-width: 460px) {
+    .article {
+        font-size: .8em;
+    }
+
+    .article > ul > li {
+        margin-left: -10%;
+    }
+
+    .tv_show_view__actor {
+        /* flex-direction: column; */
+        align-items: center;
+    }
+
+    .tv_show_view__actors > aside {
+        border: 1px solid black;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+
+  }
+
   @media screen and (max-width: 300px) {
     .create__form {
         max-width: 90%;
@@ -751,6 +772,28 @@ footer > ul {
 
     .login__form {
         max-width: 90%;
+    }
+
+    .tv_show_view__subtitle {
+        font-size: 1.2em;
+    }
+
+    .tv_show_view__actor {
+        /* flex-direction: column; */
+        font-size: .7em;
+    }
+
+    .tv_show_view__name {
+        /* flex-direction: column; */
+        font-size: .9em;
+    }
+
+    .tv_show_view__season {
+        font-size: 1em;
+    }
+
+    .tv_show_view__episode {
+        font-size: .8em;
     }
 
     .login__form__button {
