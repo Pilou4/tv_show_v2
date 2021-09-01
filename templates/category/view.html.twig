@@ -3,14 +3,15 @@
 {% block body %}
 
     <section class="category">
-        <h2>{{ category.label }}</h2>
+        <h1 class="category__title">{{ category.label }}</h1>
         <ul>
             {% for tvShow in category.tvShows %}
                 <li>
-                    <a href="{{ path('tv_show_view', {'id': tvShow.id, 'slug': tvShow.slug}) }}">
+                    <a href="{{ path('tv_show_view', {'id': tvShow.id, 'slug': tvShow.slug}) }}" class="category__name">
                         {{ tvShow.title }}
                     </a>
                 </li>
+                <hr>
             {% endfor %}
         </ul>       
     </section>

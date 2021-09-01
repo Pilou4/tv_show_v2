@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plan du site!{% endblock %}
+
+{% block body %}
+    <main class="plan">
+        <h1 class="plan__title">Plan du site</h1>
+        <ul>
+            {% for url in urls %}
+                <li>
+                    <a href="{{ hostname }}{{ url.loc }}" class="plan__link">
+                        {{ hostname }}{{ url.loc }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+{% endblock %}

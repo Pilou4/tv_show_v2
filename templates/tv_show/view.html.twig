@@ -2,55 +2,62 @@
 
 {% block body %}
     <main class="tv_show_view">
-        <h1>{{ tvShow.title }}</h1>
-        <ul>
+        <h1 class="tv_show_view__title">{{ tvShow.title }}</h1>
+        <ul class="tv_show_view__categories">
             {% for category in tvShow.categories %}
-                <li><a href="{{ path('category_view', {'id': category.id}) }}">{{ category.label }}</a></li>
+                <li><a href="{{ path('category_view', {'id': category.id}) }}" class="tv_show_view__category">{{ category.label }}</a></li>
             {% endfor %}
         </ul>
-        <article>
+        <article class="article">
             <ul>
                 {% if tvShow.directedBy is not empty %}
-                    <li><span>Show runner :</span> {{ tvShow.directedBy.fullName }}</li>
+                    <li><strong>Show runner :</strong> {{ tvShow.directedBy.fullName }}</li>
                 {% endif %}
                 {% if tvShow.releaseDate is not empty %}
-                    <li><span>Première diffusion :</span> {{ tvShow.releaseDate | date("d/m/Y") }}</li>
+                    <li><strong>Première diffusion :</strong> {{ tvShow.releaseDate | date("d/m/Y") }}</li>
                 {% endif %}
             </ul>
-            <p><span>Synopsis :</span> {{ tvShow.synopsis }}</p>
+            <p class="synopsis"><strong>Synopsis :</strong> {{ tvShow.synopsis }}</p>
         </article>
-        <h3>Personnages principaux</h3>
-        <section>
+        <h3 class="tv_show_view__subtitle">Personnages principaux</h3>
+        <section class="tv_show_view__actors">
             {% for character in tvShow.characters %}
                 <aside>
                     {% if character.pictureFilename is not empty %}
-                        <img src="{{ asset('uploads/pictures_characters/' ~ character.pictureFilename) }}">
+                        <img src="{{ asset('uploads/pictures_characters/' ~ character.pictureFilename) }}" class="picture">
                     {% endif %}
-                    <h5>{{ character.name }}</h5>
+                    <p class="tv_show_view__name">{{ character.name }}</p>
                     {% if character.actors is not empty %}
                         {% for actor in character.actors %}
-                            <p>{{ actor.fullName }}</p>
+                            <p class="tv_show_view__actor">({{ actor.fullName }})</p>
                         {% endfor %}
                     {% endif %} 
                 </aside>
             {% endfor %}
         </section>
         
-        <h3>Saisons</h3>
-        <aside>
-            <ul>
+        <h3 class="tv_show_view__subtitle">Saisons</h3>
+        <aside class="tv_show_view__seasons">
                 {% for season in tvShow.seasons %}
-                    <li>
-                       <p>Saison n°{{ season.number }} ({{ season.year }})</p>
-                        <ul>
+                      <h4 class="tv_show_view__season"> Saison n°{{ season.number }} ({{ season.year }})</h4>
+                        <ul class="tv_show_view__episodes">
                             {% for episode in season.episodes %}
-                                <li>épisode n°{{ episode.number }} - {{ episode.title }}</li>
+                                <li class="tv_show_view__episode">épisode n°{{ episode.number }} - {{ episode.title }}</li>
                             {% endfor %}
                         </ul>
-                    </li>
                 {% endfor %}
-            </ul>
         </aside>
     </main>
-
+    {% block javascripts %}
+        <script>
+            {# $(".tv_show_view")
+            .css(
+                {
+                    "background-image": "url('{{ asset('uploads/img-tv_show/' ~ tvShow.pictureFile) }}')",
+                    "background-repeat": "no-repeat",
+                    "background-size": "cover"
+                }
+            ) #}
+        </script>
+    {% endblock %}
 {% endblock %}

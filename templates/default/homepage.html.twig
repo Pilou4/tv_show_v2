@@ -3,12 +3,10 @@
 {% block body %}
     <main  class="homepage">
         <section>
-            <h1>{{ welcomeMessage }}</h1>
-            <h2>Un site sur les séries télé <i class="las la-tv la-2x"></i></h2>
-            <p>Pour commencer, parcourez la liste des catégories de series en cliquant sur le bouton ci-dessous.</p>
-            <ul>
-                <li><a href="{{path('category_list')}}">Explorer</a></li>
-            </ul>
+            <h1 class="homepage__title">{{ welcomeMessage }}</h1>
+            <p class="homepage__text">Un site sur les séries télé <i class="las la-tv la-2x"></i></p>
+            <p class="homepage__text">Pour commencer, parcourez la liste des catégories de series en cliquant sur le bouton ci-dessous.</p>
+            <a href="{{path('category_list')}}" class="homepage__button">Explorer</a>
         </section>
     </main>
 {% endblock %}

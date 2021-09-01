@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="form-container">
-        <h2  class="form-title">Créer un compte</h2>
-        <div class="form-login">
+    <div class="create">
+        <h2  class="create__title">Créer un compte</h2>
+        <div class="create__form">
             {{ form_start(form) }} 
 
             {{ form_widget(form) }}
 
-            <input type="submit" value="Créer mon compte" class="form-button">
+            <input type="submit" value="Créer mon compte" class="create__form__button">
             {{ form_end(form) }}
         </div>
     </div>

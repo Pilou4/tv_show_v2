@@ -2,27 +2,31 @@
 
 {% block body %}
     <main class="tv_show_list">
-        <h1>Séries télés</h1>
-        <div>
-            <form>
-                <input
-                    type="text"
-                    value="{{ app.request.get('search') }}" 
-                    name="search"
-                    placeholder="Rechercher par titre"
-                >
-                <button type="submit">Rechercher</button>
-            </form>
-        </div>
-        <section>
+        <h1 class="tv_show_list__title">Séries télés</h1>
+        <form class="tv_show_list__search">
+            <input
+                type="text"
+                value="{{ app.request.get('search') }}" 
+                name="search"
+                placeholder="Rechercher par titre"
+                class="tv_show_list__input"
+            >
+            <button type="submit" class="tv_show_list__button">Rechercher</button>
+        </form>
+        <hr>
+        <section class="tv_show_list__post">
             {% for tvShow in tvShows %}
-                <article class="link">
+                <article>
                     <a href="{{ path('tv_show_view', {'id': tvShow.id, 'slug': tvShow.slug}) }}">
-                        <h4>{{ tvShow.title }}</h4>
+                        <h3 class="tv_show_list__post__title">{{ tvShow.title }}</h3>
                         {% if tvShow.pictureFile is not empty %}
-                            <img src="{{ asset('uploads/img-tv_show/' ~ tvShow.pictureFile) }}" alt="image">
+                            <img
+                                src="{{ asset('uploads/img-tv_show/' ~ tvShow.pictureFile) }}"
+                                alt="image"
+                                class="tv_show_list__post__img"
+                            >
                         {% endif %}
-                        <p>{{ tvShow.seasons.count }} saisons</p>
+                        <p class="tv_show_list__post__text">{{ tvShow.seasons.count }} saisons</p>
                     </a>
                 </article>
             {% endfor %}

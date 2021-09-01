@@ -2,14 +2,15 @@
 
 {% block body %}
     <section class="category">
-        <h2>Catégories</h2>
+        <h1 class="category__title">Catégories</h1>
         <ul>
             {% for category in categories %}
                 <li>
-                    <a href="{{ path('category_view', {'id': category.id}) }}">
+                    <a href="{{ path('category_view', {'id': category.id}) }}" class="category__name">
                         {{ category.label }}
                     </a>
                 </li>
+                <hr>
             {% endfor %}
         </ul>
        
