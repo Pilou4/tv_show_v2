@@ -34,11 +34,11 @@ footer > ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-left: -10%;
 }
 
 .footer__link {
     color: black;
-    padding: 10px;
 }
 
 .footer__link:hover {
@@ -507,7 +507,7 @@ footer > ul {
 .create__form__button {
     padding: 3px 10px;
     margin: 0 auto;
-    margin-left: 28%;
+    margin-left: 40%;
     border-radius: 5px;
     margin-top: 20px;
     font-family : 'Tinos', 'sans-serif';
@@ -523,9 +523,9 @@ footer > ul {
 }
 
 .change__form__button {
-    padding: 3px 10px;
+    padding: 0 10px;
     margin: 0 auto;
-    margin-left: 18%;
+    margin-left: 37%;
     border-radius: 5px;
     margin-top: 20px;
     font-family : 'Tinos', 'sans-serif';
@@ -700,15 +700,62 @@ footer > ul {
     }
 
     .create__form__button {
-        margin-left: 36%;
+        margin-left: 42%;
+    }
+
+    .change__form__button {
+        margin-left: 40%;
+    }
+
+  }
+  @media screen and (max-width: 500px) {
+    .create__form {
+        max-width: 90%;
+    }
+
+    .login__form {
+        max-width: 90%;
+    }
+
+    .login__form__button {
+        margin-left: 27%;
+        padding: 0 10px;
+    }
+
+    .create__form__button {
+        margin-left: 37%;
+        padding: 0 10px;
+    }
+
+    .change__form__button {
+        margin-left: 32%;
+    }
+    
+  }
+
+  @media screen and (max-width: 300px) {
+    .create__form {
+        max-width: 90%;
+    }
+
+    .login__form {
+        max-width: 90%;
+    }
+
+    .login__form__button {
+        margin-left: 20%;
+    }
+
+    .create__form__button {
+        margin-left: 28%;
+        padding: 0 10px;
     }
 
     .change__form__button {
         margin-left: 28%;
     }
-
+    
   }
-
 
 /* ---- Formulaire Ajout et Modification ---- */
 .form-title {
