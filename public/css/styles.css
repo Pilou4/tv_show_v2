@@ -79,7 +79,7 @@ footer > ul {
 .homepage__button {
     padding: 8px;
     margin: 0 auto;
-    margin-left: 40%;
+    margin-left: 39%;
     border-radius: 5px;
     font-family : 'Tinos', 'sans-serif';
     background-color: rgb(204, 198, 198);
@@ -813,6 +813,17 @@ footer > ul {
         margin-left: 28%;
     }
     
+    .homepage__title {
+    }
+    
+    .homepage__text {
+        font-size: .8em;
+     }
+     
+    .homepage__button {
+        margin-left: 27%;
+        padding: 3px 10px;
+    }
   }
 
 /* ---- Formulaire Ajout et Modification ---- */
