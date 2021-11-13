@@ -5,27 +5,28 @@
 body {
     margin: 0;
     padding: 0;
+    /* background-color: rgb(47, 37, 75); */
     font-size: 1.4em;
 }
 
 .navbar {
-    background-color: rgb(231, 227, 216);
+    background-color: rgb(248, 167, 61);
     font-family : 'Tinos', 'sans-serif';
     font-size: .9em;
 }
 
 .navbar > a {
-    background-color: rgb(231, 227, 216);
+    /* background-color: rgb(231, 227, 216);s */
     font-family : 'Tinos', 'sans-serif';
     font-size: .9em;
 }
 
 /* ---- Footer ---- */
 .footer {
-    background-color: rgb(231, 227, 216);
+    background-color: rgb(248, 167, 61);
     font-family : 'Tinos', 'sans-serif';
     font-size: .9em;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 footer > ul {
@@ -49,16 +50,22 @@ footer > ul {
 /* ---- homepage ---- */
 .homepage {
     max-width: 1088px;
-    min-height: 83vh;
+    min-height: 85vh;
     padding: 20px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(47, 37, 75);
 }
 
 .homepage > section {
     padding: 1em;
     margin: 30px 5px;
     border: 1px solid black;
-    background-color: rgb(127, 255, 212, 35%);
+    background-color: rgb(248, 167, 61);
+    /* background-color: rgb(127, 255, 212, 35%); */
+    /* background-color: aliceblue; */
     border-radius: 10px;
 }
 
